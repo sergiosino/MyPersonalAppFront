@@ -1,3 +1,11 @@
+npm i axios
+npm i react-toastify
+npm i react-router-dom
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material
+npm i react-hook-form
+npm i jwt-decode
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
