@@ -20,6 +20,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from "react-router-dom";
 import { verifyToken, deleteToken } from '../../utils/jwtToken';
+import { routes } from '../../utils/routes';
 
 const drawerWidth = 240;
 
@@ -148,13 +149,13 @@ export default function MiniDrawer(props) {
                     </DrawerHeader>
                     <Divider />
                     <List>
-                        <ListItemButton onClick={() => navigate("/offers")}>
+                        <ListItemButton onClick={() => navigate(routes.offers)}>
                             <ListItemIcon>
                                 <LocalOfferIcon />
                             </ListItemIcon>
                             <ListItemText primary="Offers" />
                         </ListItemButton>
-                        <ListItemButton onClick={() => navigate("/tasksConfig")}>
+                        <ListItemButton onClick={() => navigate(routes.tasksConfig)}>
                             <ListItemIcon>
                                 <SettingsIcon />
                             </ListItemIcon>

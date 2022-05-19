@@ -1,4 +1,5 @@
 import jwt from 'jwt-decode';
+import { routes } from './routes';
 
 export const setToken = (token) => {
     sessionStorage.setItem("token", token);
@@ -20,7 +21,7 @@ export const verifyToken = () => {
 
 export const deleteToken = () => {
     sessionStorage.removeItem("token");
-    window.location = "/";
+    window.location = routes.login;
 }
 
 export const getToken = () => {

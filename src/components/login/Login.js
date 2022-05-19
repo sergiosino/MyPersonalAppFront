@@ -7,13 +7,14 @@ import Container from '@mui/material/Container';
 import { post } from '../../actions/Actions';
 import { useNavigate, useLocation } from "react-router-dom";
 import { setToken } from '../../utils/jwtToken';
+import { routes } from '../../utils/routes';
 import { toast } from 'react-toastify';
 
 export default function SignIn() {
     let location = useLocation();
     let navigate = useNavigate();
 
-    let from = location.state?.from?.pathname || "/offers";
+    let from = location.state?.from?.pathname || routes.offers;
 
     const handleSubmit = (event) => {
         event.preventDefault();
