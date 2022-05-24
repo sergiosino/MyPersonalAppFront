@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { get, put } from '../../actions/Actions';
+import { get, put } from '../../actions/actions';
 import { useForm, Controller } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
@@ -17,10 +17,11 @@ const tasksConfigDefault = {
 };
 
 export default function TasksConfig() {
-    const { control, handleSubmit, reset } = useForm({ defaultValues: tasksConfigDefault })
+    const { control, handleSubmit, reset } = useForm({ defaultValues: tasksConfigDefault });
+    const taskConfigId = "otairh8hcDx0lgjkg60l";
 
     const getTasksConfig = () => {
-        get().tasksConfig().then(response => {
+        get().tasksConfig(taskConfigId).then(response => {
             reset(response.data);
         }).catch(ex => {
             toast.error("Error getting tasks configuration")
@@ -29,7 +30,7 @@ export default function TasksConfig() {
     }
 
     const saveTasksConfig = (data) => {
-        put().tasksConfig(data).then(response => {
+        put().tasksConfig(taskConfigId, data).then(response => {
             toast.success("Tasks configuration saved")
         }).catch(ex => {
             toast.error("Error saving tasks config")

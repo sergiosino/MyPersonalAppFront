@@ -4,7 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import { post } from '../../actions/Actions';
+import { post } from '../../actions/actions';
 import { useNavigate, useLocation } from "react-router-dom";
 import { setToken } from '../../utils/jwtToken';
 import { routes } from '../../utils/routes';
@@ -20,13 +20,7 @@ export default function SignIn() {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
 
-        var userData = {
-            "email": data.get('email'),
-            "password": data.get('password'),
-            "returnSecureToken": true
-        }
-
-        post().login(userData).then((response) => {
+        post().login(data.get('email'), data.get('password')).then((response) => {
             setToken(response.data.idToken);
             navigate(from, { replace: true });
         }).catch((error) => {

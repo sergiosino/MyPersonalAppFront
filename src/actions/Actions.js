@@ -30,22 +30,22 @@ const axiosCall = (method, url, data) => {
 export const get = () => {
     const method = "get";
     return {
-        allOffers: () => axiosCall(method, `${getUrlApi()}/offers/getall`),
-        bestOffer: () => axiosCall(method, `${getUrlApi()}/offers/getbest`),
-        tasksConfig: () => axiosCall(method, `${getUrlApi()}/tasksconfig/get/otairh8hcDx0lgjkg60l`)
+        allOffers: () => axiosCall(method, `${getUrlApi()}/Offers/GetAll`),
+        bestOffer: () => axiosCall(method, `${getUrlApi()}/Offers/GetBest`),
+        tasksConfig: (id) => axiosCall(method, `${getUrlApi()}/TasksConfig/Get/${id}`)
     };
 }
 
 export const post = () => {
-    const method = "post";
+    // const method = "post";
     return {
-        login: (data) => axiosCall(method, "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC6LrlGKQiPrcCLUrSBgEhYR5rh9c_deJg", data)
+        login: (email, password) => axios.post(`${getUrlApi()}/Users/SignIn?email=${email}&password=${password}`)
     };
 }
 
 export const put = () => {
     const method = "put";
     return {
-        tasksConfig: (data) => axiosCall(method, `${getUrlApi()}/tasksconfig/put/otairh8hcDx0lgjkg60l`, data)
+        tasksConfig: (id, data) => axiosCall(method, `${getUrlApi()}/TasksConfig/Put/${id}`, data)
     };
 }
