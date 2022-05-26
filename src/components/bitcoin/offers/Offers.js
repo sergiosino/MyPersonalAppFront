@@ -2,7 +2,7 @@ import * as React from 'react';
 import OfferCard from './OfferCard';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { get } from '../../actions/actions';
+import { get } from '../../../actions/actions';
 import { toast } from 'react-toastify';
 
 function Offers() {

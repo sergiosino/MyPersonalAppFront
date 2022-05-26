@@ -9,7 +9,8 @@ const getRoute = () => {
 }
 
 export const routes = {
-    login: `${getRoute()}/`,
+    login: `${getRoute()}/login`,
     tasksConfig: `${getRoute()}/tasksConfig`,
-    offers: `${getRoute()}/offers`
+    offers: `${getRoute()}/offers`,
+    f1Schedule: `${getRoute()}/`,
 }

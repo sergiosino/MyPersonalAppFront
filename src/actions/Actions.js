@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getToken, deleteToken } from "../utils/jwtToken";
 
-export const getUrlApi = () => {
+const getUrlApi = () => {
     const url = window.location.href;
     if(url.includes("github")) {
         return "https://mypersonalappapi.herokuapp.com/api";

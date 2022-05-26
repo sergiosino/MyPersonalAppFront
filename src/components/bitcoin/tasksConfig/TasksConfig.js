@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { get, put } from '../../actions/actions';
+import { get, put } from '../../../actions/actions';
 import { useForm, Controller } from 'react-hook-form';
 import { toast } from 'react-toastify';
 

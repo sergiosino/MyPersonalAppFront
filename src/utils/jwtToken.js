@@ -1,29 +1,31 @@
 import jwt from 'jwt-decode';
 import { routes } from './routes';
 
+const STORAGE_TOKEN = "token";
+
 export const setToken = (token) => {
-    sessionStorage.setItem("token", token);
+    localStorage.setItem(STORAGE_TOKEN, token);
+    return verifyToken();
 }
 
 export const verifyToken = () => {
     try {
-        const token = sessionStorage.getItem("token");
+        const token = localStorage.getItem(STORAGE_TOKEN);
         if (token) {
             const userData = jwt(token);
-            if (userData)
-                return true;
+            return userData;
         }
     } catch (error) {
         deleteToken();
     }
-    return false;
+    return null;
 }
 
 export const deleteToken = () => {
-    sessionStorage.removeItem("token");
+    localStorage.removeItem(STORAGE_TOKEN);
     window.location = routes.login;
 }
 
 export const getToken = () => {
-    return sessionStorage.getItem("token");
+    return localStorage.getItem(STORAGE_TOKEN);
 }

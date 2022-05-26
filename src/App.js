@@ -3,23 +3,24 @@ import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import ApplicationBar from './components/applicationBar/ApplicationBar';
 import ApplicationFooter from './components/ApplicationFooter';
-import Container from '@mui/material/Container';
 import Login from './components/login/Login';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter, Route, Routes, Navigate, useLocation } from "react-router-dom";
-import TasksConfig from './components/tasksConfig/TasksConfig';
-import Offers from './components/offers/Offers';
-import { verifyToken } from './utils/jwtToken';
+import TasksConfig from './components/bitcoin/tasksConfig/TasksConfig';
+import Offers from './components/bitcoin/offers/Offers';
 import { ToastContainer } from 'react-toastify';
 import { routes } from './utils/routes';
-
-const theme = createTheme();
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
+import F1Schedule from './components/formula1/f1Schedule/F1Schedule';
+import { ToggleColorModeContextProvider } from './contexts/ToggleColorModeContext';
+import AuthTokenContext, { AuthTokenContextProvider } from './contexts/AuthTokenContext';
 
 function RequireAuth(props) {
   const { children } = props;
   const location = useLocation();
+  const { token } = React.useContext(AuthTokenContext);
 
-  if (verifyToken())
+  if (token)
     return children;
   else
     return <Navigate to={routes.login} state={{ from: location }} replace />;
@@ -27,21 +28,25 @@ function RequireAuth(props) {
 
 function App() {
   return (
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <ToastContainer position="bottom-center" />
-        <ApplicationBar >
-          <Container fixed sx={{ mt: 4, mb: 4 }}>
-            <Routes>
-              <Route path={routes.login} element={<Login />} />
-              <Route path={routes.offers} element={<RequireAuth><Offers /></RequireAuth>} />
-              <Route path={routes.tasksConfig} element={<RequireAuth><TasksConfig /></RequireAuth>} />
-            </Routes>
-            <ApplicationFooter />
-          </Container>
-        </ApplicationBar>
-      </ThemeProvider>
-    </BrowserRouter>
+    <AuthTokenContextProvider>
+      <ToggleColorModeContextProvider>
+        <BrowserRouter>
+          <CssBaseline />
+          <ToastContainer position="bottom-center" />
+          <ApplicationBar>
+            <Container>
+              <Routes>
+                <Route path={routes.login} element={<Login />} />
+                <Route path={routes.f1Schedule} element={<F1Schedule />} />
+                <Route path={routes.offers} element={<RequireAuth><Offers /></RequireAuth>} />
+                <Route path={routes.tasksConfig} element={<RequireAuth><TasksConfig /></RequireAuth>} />
+              </Routes>
+              <ApplicationFooter />
+            </Container>
+          </ApplicationBar>
+        </BrowserRouter>
+      </ToggleColorModeContextProvider>
+    </AuthTokenContextProvider>
   );
 }
 
