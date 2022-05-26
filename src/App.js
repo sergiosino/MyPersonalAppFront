@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import ApplicationBar from './components/applicationBar/ApplicationBar'
 import ApplicationFooter from './components/ApplicationFooter'
 import Login from './components/login/Login'
-import { BrowserRouter, Route, Routes, Navigate, useLocation } from "react-router-dom"
+import { BrowserRouter, Route, Routes, useNavigate, useLocation } from "react-router-dom"
 import TasksConfig from './components/bitcoin/tasksConfig/TasksConfig'
 import Offers from './components/bitcoin/offers/Offers'
 import { ToastContainer } from 'react-toastify'
@@ -17,13 +17,13 @@ import AuthTokenContext, { AuthTokenContextProvider } from './contexts/AuthToken
 
 function RequireAuth(props) {
   const { children } = props
-  const location = useLocation()
+  const navigate = useNavigate()
   const { token } = React.useContext(AuthTokenContext)
 
   if (token)
     return children
   else
-    return <Navigate to={routes.login} state={{ from: location }} replace />
+    navigate(routes.login)
 }
 
 function App() {
