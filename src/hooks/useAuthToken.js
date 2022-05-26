@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { useNavigate } from "react-router-dom"
 import { routes } from '../utils/routes'
 import jwt from 'jwt-decode'
-import { post } from '../actions/actionss'
+import { post } from '../actions/actions'
 import { toast } from 'react-toastify'
 import { STORAGE_TOKEN } from '../constants/constants'
 import AuthTokenContext from '../contexts/AuthTokenContext'
