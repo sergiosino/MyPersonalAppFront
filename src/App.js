@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import ApplicationBar from './components/applicationBar/ApplicationBar'
 import ApplicationFooter from './components/ApplicationFooter'
 import Login from './components/login/Login'
-import { BrowserRouter, Route, Routes, useNavigate, useLocation } from "react-router-dom"
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom"
 import TasksConfig from './components/bitcoin/tasksConfig/TasksConfig'
 import Offers from './components/bitcoin/offers/Offers'
 import { ToastContainer } from 'react-toastify'
@@ -34,7 +34,7 @@ function App() {
           <CssBaseline />
           <ToastContainer position="bottom-center" />
           <ApplicationBar>
-            <Container>
+            <Container fixed sx={{mt: 10}}>
               <Routes>
                 <Route path={routes.login} element={<Login />} />
                 <Route path={routes.f1Schedule} element={<F1Schedule />} />

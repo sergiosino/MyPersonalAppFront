@@ -26,7 +26,8 @@ export function useAuthToken() {
             }).catch((error) => {
                 toast.error("Error trying to log in")
                 console.log(error)
-                logout()
+                localStorage.removeItem(STORAGE_TOKEN)
+                setToken(null)
             })
     }
 

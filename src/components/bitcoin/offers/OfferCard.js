@@ -13,7 +13,7 @@ function OfferCard(props) {
                 <Card sx={{ display: 'flex' }}>
                     <CardMedia
                         component="img"
-                        sx={{ width: 100, display: { xs: 'none', sm: 'block' } }}
+                        sx={{ width: "15%", maxWidth: 150 }}
                         src={offer.trader.avatar_url}
                         alt={offer.trader.login}
                     />

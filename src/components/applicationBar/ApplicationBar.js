@@ -11,9 +11,9 @@ export default function ApplicationBar(props) {
     const [mobileOpen, setMobileOpen] = React.useState(false)
 
     const handleDrawerToggle = () => {
-      setMobileOpen(!mobileOpen)
+        setMobileOpen(!mobileOpen)
     }
-  
+
     return (
         <Box sx={{ display: 'flex', minHeight: '100vh' }}>
             <Box
@@ -29,12 +29,8 @@ export default function ApplicationBar(props) {
                     PaperProps={{ style: { width: drawerWidth } }}
                     sx={{ display: { md: 'block', sm: 'none', xs: 'none' } }} />
             </Box>
-            <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <Header onDrawerToggle={handleDrawerToggle} />
-                <Box component="main" sx={{ flex: 1, py: 6, px: 4 }}>
-                    {children}
-                </Box>
-            </Box>
+            <Header onDrawerToggle={handleDrawerToggle} />
+            {children}
         </Box>
     )
 }

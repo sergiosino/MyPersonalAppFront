@@ -29,8 +29,8 @@ function Header(props) {
     }
 
     return (
-        <AppBar position="sticky">
-            <Toolbar>
+        <AppBar>
+            <Toolbar variant="dense">
                 <Grid container spacing={2} alignItems="center">
                     <Grid sx={{ display: { md: 'none', sm: 'block' } }} item>
                         <IconButton
