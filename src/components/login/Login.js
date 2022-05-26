@@ -1,21 +1,21 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import { toast } from 'react-toastify';
-import { useAuthToken } from '../../hooks/useAuthToken';
-import { post } from '../../actions/actions';
+import * as React from 'react'
+import Button from '@mui/material/Button'
+import CssBaseline from '@mui/material/CssBaseline'
+import TextField from '@mui/material/TextField'
+import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
+import { toast } from 'react-toastify'
+import { useAuthToken } from '../../hooks/useAuthToken'
+import { post } from '../../actions/actions'
 
 export default function SignIn() {
-    const { login } = useAuthToken();
+    const { login } = useAuthToken()
 
     const handleSubmit = (event) => {
         event.preventDefault()
         const data = new FormData(event.currentTarget)
         login(data.get('email'), data.get('password'))
-    };
+    }
 
     return (
         <Container component="main" maxWidth="xs">
@@ -50,5 +50,5 @@ export default function SignIn() {
                 </Button>
             </Box>
         </Container>
-    );
+    )
 }

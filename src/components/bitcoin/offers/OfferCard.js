@@ -1,12 +1,12 @@
-import * as React from 'react';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
+import * as React from 'react'
+import Typography from '@mui/material/Typography'
+import Grid from '@mui/material/Grid'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardMedia from '@mui/material/CardMedia'
 
 function OfferCard(props) {
-    const { offer } = props;
+    const { offer } = props
 
     return (
         <Grid item xs={12}>
@@ -44,7 +44,7 @@ function OfferCard(props) {
                     </CardContent>
                 </Card>
         </Grid>
-    );
+    )
 }
 
-export default OfferCard;
+export default OfferCard

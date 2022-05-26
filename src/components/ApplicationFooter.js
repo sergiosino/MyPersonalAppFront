@@ -1,7 +1,7 @@
-import * as React from "react";
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import LinkNewTab from './LinkNewTab';
+import * as React from "react"
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import LinkNewTab from './LinkNewTab'
 
 export default function ApplicationFooter() {
 
@@ -18,5 +18,5 @@ export default function ApplicationFooter() {
                 {` ${new Date().getFullYear()}.`}
             </Typography>
         </Box>
-    );
+    )
 }

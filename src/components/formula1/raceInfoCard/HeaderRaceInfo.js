@@ -1,20 +1,20 @@
-import * as React from 'react';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import SportsScoreIcon from '@mui/icons-material/SportsScore';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import LinkNewTab from '../LinkNewTab';
-import { raceStatusEnum } from "../../../constants/enums";
-import { formatDatePretty } from '../../../utils/formatDates';
+import * as React from 'react'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+import SportsScoreIcon from '@mui/icons-material/SportsScore'
+import Typography from '@mui/material/Typography'
+import Grid from '@mui/material/Grid'
+import LinkNewTab from '../LinkNewTab'
+import { raceStatusEnum } from "../../../constants/enums"
+import { formatDatePretty } from '../../../utils/formatDates'
 
 export default function HeaderRaceInfo(props) {
-    const { race, raceStatus } = props;
+    const { race, raceStatus } = props
 
     const getRaceIcon = () => {
         if (raceStatus === raceStatusEnum.past)
-            return <CheckCircleIcon sx={{ color: "darkgreen" }} fontSize="small" />;
+            return <CheckCircleIcon sx={{ color: "darkgreen" }} fontSize="small" />
         else if (raceStatus === raceStatusEnum.next)
-            return <SportsScoreIcon />;
+            return <SportsScoreIcon />
     }
 
     return (
@@ -46,5 +46,5 @@ export default function HeaderRaceInfo(props) {
                 </Typography>
             </Grid>
         </Grid>
-    );
+    )
 }

@@ -6,7 +6,7 @@ const getDesignTheme = (mode) => {
             ...(mode === 'light' ? lightTheme : darkTheme),
         },
     }
-};
+}
 
 const lightTheme = {
     primary: {
@@ -19,9 +19,9 @@ const lightTheme = {
         default: '#FFFFFF',
         paper: '#fff',
     },
-};
+}
 
 const darkTheme = {
 }
 
-export default getDesignTheme;
+export default getDesignTheme

@@ -1,29 +1,29 @@
-import * as React from 'react';
-import axios from 'axios';
-import Grid from '@mui/material/Grid';
-import RaceInfoCard from '../raceInfoCard/RaceInfoCard';
-import { raceStatusEnum } from "../../../constants/enums";
+import * as React from 'react'
+import axios from 'axios'
+import Grid from '@mui/material/Grid'
+import RaceInfoCard from '../raceInfoCard/RaceInfoCard'
+import { raceStatusEnum } from "../../../constants/enums"
 
 function F1Schedule() {
 
-    const [races, setRaces] = React.useState([]);
-    let nextRaceFound = false;
-    const year = new Date().getFullYear();
+    const [races, setRaces] = React.useState([])
+    let nextRaceFound = false
+    const year = new Date().getFullYear()
 
     const getRacesInfo = () => {
         axios.get(`https://ergast.com/api/f1/${year}.json`).then(response => {
-            setRaces(response.data.MRData.RaceTable.Races);
+            setRaces(response.data.MRData.RaceTable.Races)
         }).catch(ex => {
-            console.log(ex);
-        });
+            console.log(ex)
+        })
     }
 
     const getNextRace = () => {
-        const todayPlus3h = new Date().setHours(new Date().getHours() + 3);
+        const todayPlus3h = new Date().setHours(new Date().getHours() + 3)
         for (let race in races) {
             if (new Date(races[race].date) > todayPlus3h) {
-                document.getElementById(`${races[race].Circuit.circuitId}-raceInfoCard`).scrollIntoView();
-                break;
+                document.getElementById(`${races[race].Circuit.circuitId}-raceInfoCard`).scrollIntoView()
+                break
             }
         }
     }
@@ -31,22 +31,22 @@ function F1Schedule() {
     const getRaceStatus = (race) => {
         if (new Date(race.date) > new Date().setHours(new Date().getHours() + 3)) {
             if (!nextRaceFound) {
-                nextRaceFound = true;
-                return raceStatusEnum.next;
+                nextRaceFound = true
+                return raceStatusEnum.next
             }
-            return raceStatusEnum.future;
+            return raceStatusEnum.future
         }
-        return raceStatusEnum.past;
+        return raceStatusEnum.past
     }
 
     React.useEffect(() => {
-        getRacesInfo();
-    }, []);
+        getRacesInfo()
+    }, [])
 
     React.useEffect(() => {
         if (races.length > 0)
-            getNextRace();
-    }, [races]);
+            getNextRace()
+    }, [races])
 
     return (
         <>
@@ -58,7 +58,7 @@ function F1Schedule() {
                 )}
             </Grid>
         </>
-    );
+    )
 }
 
-export default F1Schedule;
+export default F1Schedule

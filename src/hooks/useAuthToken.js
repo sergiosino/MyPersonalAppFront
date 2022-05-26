@@ -29,7 +29,7 @@ export function useAuthToken() {
                 toast.error("Error trying to log in")
                 console.log(error)
                 logout()
-            });
+            })
     }
 
     const logout = () => {

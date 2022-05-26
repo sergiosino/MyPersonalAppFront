@@ -1,26 +1,26 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Grid from '@mui/material/Grid';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import LogoutIcon from '@mui/icons-material/Logout';
-import ToggleColorModeContext from '../../contexts/ToggleColorModeContext';
-import { useTheme } from '@mui/material/styles';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { useAuthToken } from '../../hooks/useAuthToken';
-import AuthTokenContext from '../../contexts/AuthTokenContext';
-import Button from '@mui/material/Button';
-import { useNavigate } from "react-router-dom";
-import { routes } from '../../utils/routes';
+import * as React from 'react'
+import AppBar from '@mui/material/AppBar'
+import Grid from '@mui/material/Grid'
+import IconButton from '@mui/material/IconButton'
+import MenuIcon from '@mui/icons-material/Menu'
+import Toolbar from '@mui/material/Toolbar'
+import LogoutIcon from '@mui/icons-material/Logout'
+import ToggleColorModeContext from '../../contexts/ToggleColorModeContext'
+import { useTheme } from '@mui/material/styles'
+import Brightness4Icon from '@mui/icons-material/Brightness4'
+import Brightness7Icon from '@mui/icons-material/Brightness7'
+import { useAuthToken } from '../../hooks/useAuthToken'
+import AuthTokenContext from '../../contexts/AuthTokenContext'
+import Button from '@mui/material/Button'
+import { useNavigate } from "react-router-dom"
+import { routes } from '../../utils/routes'
 
 function Header(props) {
-    const { onDrawerToggle } = props;
+    const { onDrawerToggle } = props
 
     const colorMode = React.useContext(ToggleColorModeContext)
-    const theme = useTheme();
-    const navigate = useNavigate();
+    const theme = useTheme()
+    const navigate = useNavigate()
     const { logout } = useAuthToken()
     const { token } = React.useContext(AuthTokenContext)
 
@@ -72,7 +72,7 @@ function Header(props) {
                 </Grid>
             </Toolbar>
         </AppBar>
-    );
+    )
 }
 
-export default Header;
+export default Header

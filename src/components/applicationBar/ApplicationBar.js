@@ -1,18 +1,18 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Navigator from './Navigator';
-import Header from './Header';
+import * as React from 'react'
+import Box from '@mui/material/Box'
+import Navigator from './Navigator'
+import Header from './Header'
 
-const drawerWidth = 256;
+const drawerWidth = 256
 
 export default function ApplicationBar(props) {
-    const { children } = props;
+    const { children } = props
 
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [mobileOpen, setMobileOpen] = React.useState(false)
 
     const handleDrawerToggle = () => {
-      setMobileOpen(!mobileOpen);
-    };
+      setMobileOpen(!mobileOpen)
+    }
   
     return (
         <Box sx={{ display: 'flex', minHeight: '100vh' }}>
@@ -36,5 +36,5 @@ export default function ApplicationBar(props) {
                 </Box>
             </Box>
         </Box>
-    );
+    )
 }

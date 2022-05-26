@@ -1,31 +1,31 @@
-import jwt from 'jwt-decode';
-import { routes } from './routes';
+import jwt from 'jwt-decode'
+import { routes } from './routes'
 
-const STORAGE_TOKEN = "token";
+const STORAGE_TOKEN = "token"
 
 export const setToken = (token) => {
-    localStorage.setItem(STORAGE_TOKEN, token);
-    return verifyToken();
+    localStorage.setItem(STORAGE_TOKEN, token)
+    return verifyToken()
 }
 
 export const verifyToken = () => {
     try {
-        const token = localStorage.getItem(STORAGE_TOKEN);
+        const token = localStorage.getItem(STORAGE_TOKEN)
         if (token) {
-            const userData = jwt(token);
-            return userData;
+            const userData = jwt(token)
+            return userData
         }
     } catch (error) {
-        deleteToken();
+        deleteToken()
     }
-    return null;
+    return null
 }
 
 export const deleteToken = () => {
-    localStorage.removeItem(STORAGE_TOKEN);
-    window.location = routes.login;
+    localStorage.removeItem(STORAGE_TOKEN)
+    window.location = routes.login
 }
 
 export const getToken = () => {
-    return localStorage.getItem(STORAGE_TOKEN);
+    return localStorage.getItem(STORAGE_TOKEN)
 }

@@ -1,13 +1,13 @@
-import * as React from 'react';
-import Typography from '@mui/material/Typography';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Divider from '@mui/material/Divider';
-import Grid from '@mui/material/Grid';
-import { formatDatePretty } from '../../../utils/formatDates';
+import * as React from 'react'
+import Typography from '@mui/material/Typography'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Divider from '@mui/material/Divider'
+import Grid from '@mui/material/Grid'
+import { formatDatePretty } from '../../../utils/formatDates'
 
 export default function PreRaceInfo(props) {
-    const { race } = props;
+    const { race } = props
 
     const preRaceInfoCard = (title, date, time) => {
         return (
@@ -20,27 +20,27 @@ export default function PreRaceInfo(props) {
                     </Typography>
                 </CardContent>
             </Card>
-        );
+        )
     }
 
     const firstPractice = () => {
-        return preRaceInfoCard("First practice", race.FirstPractice?.date, race.FirstPractice?.time);
+        return preRaceInfoCard("First practice", race.FirstPractice?.date, race.FirstPractice?.time)
     }
 
     const secondPractice = () => {
-        return preRaceInfoCard("Second practice", race.SecondPractice?.date, race.SecondPractice?.time);
+        return preRaceInfoCard("Second practice", race.SecondPractice?.date, race.SecondPractice?.time)
     }
 
     const thirdPractice = () => {
-        return preRaceInfoCard("Third practice", race.ThirdPractice?.date, race.ThirdPractice?.time);
+        return preRaceInfoCard("Third practice", race.ThirdPractice?.date, race.ThirdPractice?.time)
     }
 
     const qualifying = () => {
-        return preRaceInfoCard("Qualifying", race.Qualifying?.date, race.Qualifying?.time);
+        return preRaceInfoCard("Qualifying", race.Qualifying?.date, race.Qualifying?.time)
     }
 
     const sprint = () => {
-        return preRaceInfoCard("Sprint", race.Sprint?.date, race.Sprint?.time);
+        return preRaceInfoCard("Sprint", race.Sprint?.date, race.Sprint?.time)
     }
 
     const raceWithSprint = () => {
@@ -56,7 +56,7 @@ export default function PreRaceInfo(props) {
                     {sprint()}
                 </Grid>
             </>
-        );
+        )
     }
 
     const raceWithoutSprint = () => {
@@ -72,7 +72,7 @@ export default function PreRaceInfo(props) {
                     {qualifying()}
                 </Grid>
             </>
-        );
+        )
     }
 
     return (
@@ -82,5 +82,5 @@ export default function PreRaceInfo(props) {
             </Grid>
             {race.Sprint ? raceWithSprint() : raceWithoutSprint()}
         </Grid>
-    );
+    )
 }

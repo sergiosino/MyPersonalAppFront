@@ -1,11 +1,11 @@
-import * as React from 'react';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import { get, put } from '../../../actions/actions';
-import { useForm, Controller } from 'react-hook-form';
-import { toast } from 'react-toastify';
+import * as React from 'react'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import { get, put } from '../../../actions/actions'
+import { useForm, Controller } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
 const tasksConfigDefault = {
     bestOfferMinPercentage: 0,
@@ -14,19 +14,19 @@ const tasksConfigDefault = {
     taskBestOfferFoundDelay: 0,
     taskBestOfferNotFoundDelay: 0,
     taskExceptionDelay: 0
-};
+}
 
 export default function TasksConfig() {
-    const { control, handleSubmit, reset } = useForm({ defaultValues: tasksConfigDefault });
-    const taskConfigId = "otairh8hcDx0lgjkg60l";
+    const { control, handleSubmit, reset } = useForm({ defaultValues: tasksConfigDefault })
+    const taskConfigId = "otairh8hcDx0lgjkg60l"
 
     const getTasksConfig = () => {
         get().tasksConfig(taskConfigId).then(response => {
-            reset(response.data);
+            reset(response.data)
         }).catch(ex => {
             toast.error("Error getting tasks configuration")
-            console.log(ex);
-        });
+            console.log(ex)
+        })
     }
 
     const saveTasksConfig = (data) => {
@@ -34,12 +34,12 @@ export default function TasksConfig() {
             toast.success("Tasks configuration saved")
         }).catch(ex => {
             toast.error("Error saving tasks config")
-            console.log(ex);
-        });
+            console.log(ex)
+        })
     }
 
     React.useEffect(() => {
-        getTasksConfig();
+        getTasksConfig()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -153,5 +153,5 @@ export default function TasksConfig() {
                 Save
             </Button>
         </React.Fragment>
-    );
+    )
 }

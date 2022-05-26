@@ -1,10 +1,10 @@
 
 const getRoute = () => {
-    const url = window.location.href;
+    const url = window.location.href
     if(url.includes("github")) {
-        return "/MyPersonalAppFront";
+        return "/MyPersonalAppFront"
     } else {
-        return "";
+        return ""
     }
 }
 

@@ -1,21 +1,21 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import * as React from 'react'
+import Box from '@mui/material/Box'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TableHead from '@mui/material/TableHead'
+import TablePagination from '@mui/material/TablePagination'
+import TableRow from '@mui/material/TableRow'
+import Paper from '@mui/material/Paper'
 
 export default function ResultsTable(props) {
-    const { rows, columns, isRaceResults, rowsPerPage = 5 } = props;
-    const [page, setPage] = React.useState(0);
+    const { rows, columns, isRaceResults, rowsPerPage = 5 } = props
+    const [page, setPage] = React.useState(0)
 
     const handleChangePage = (event, newPage) => {
-        setPage(newPage);
-    };
+        setPage(newPage)
+    }
 
     const colsHead = (columns) => {
         return (
@@ -26,7 +26,7 @@ export default function ResultsTable(props) {
                     ))}
                 </TableRow>
             </TableHead>
-        );
+        )
     }
     
     const raceTableCells = (row) => {
@@ -37,7 +37,7 @@ export default function ResultsTable(props) {
                 <TableCell>{row.FastestLap?.Time?.time}</TableCell>
                 <TableCell>{row.points}</TableCell>
             </>
-        );
+        )
     }
 
     const qualyTableCells = (row) => {
@@ -47,10 +47,10 @@ export default function ResultsTable(props) {
                 <TableCell>{row.Q2}</TableCell>
                 <TableCell>{row.Q3}</TableCell>
             </>
-        );
+        )
     }
 
-    const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+    const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0
 
     return (
         <Box sx={{ width: '100%' }}>
@@ -91,5 +91,5 @@ export default function ResultsTable(props) {
                 />
             </Paper>
         </Box>
-    );
+    )
 }

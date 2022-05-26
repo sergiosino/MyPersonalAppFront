@@ -29,7 +29,7 @@ export const qualyTableCols = [
         label: 'Q3',
         width: "15%"
     },
-];
+]
 
 export const raceTableCols = [
     {
@@ -67,4 +67,4 @@ export const raceTableCols = [
         label: 'Points',
         width: "5%"
     },
-];
+]
