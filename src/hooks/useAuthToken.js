@@ -1,8 +1,8 @@
 import { useContext } from 'react'
-import { useNavigate, useLocation } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { routes } from '../utils/routes'
 import jwt from 'jwt-decode'
-import { post } from '../actions/actions'
+import { post } from '../actions/actionss'
 import { toast } from 'react-toastify'
 import { STORAGE_TOKEN } from '../constants/constants'
 import AuthTokenContext from '../contexts/AuthTokenContext'
@@ -10,7 +10,6 @@ import AuthTokenContext from '../contexts/AuthTokenContext'
 export function useAuthToken() {
     const { setToken } = useContext(AuthTokenContext)
     const navigate = useNavigate()
-    const location = useLocation()
 
     const login = (email, password) => {
         post().login(email, password)
@@ -18,10 +17,9 @@ export function useAuthToken() {
                 try {
                     const token = response.data.idToken
                     jwt(token)
-                    const from = location.state?.from?.pathname || routes.f1Schedule
                     localStorage.setItem(STORAGE_TOKEN, token)
                     setToken(token)
-                    navigate(from, { replace: true })
+                    navigate(routes.f1Schedule)
                 } catch (error) {
                     logout()
                 }
