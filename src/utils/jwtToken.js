@@ -23,7 +23,6 @@ export const verifyToken = () => {
 
 export const deleteToken = () => {
     localStorage.removeItem(STORAGE_TOKEN)
-    window.location = routes.login
 }
 
 export const getToken = () => {

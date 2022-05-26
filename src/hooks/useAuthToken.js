@@ -35,8 +35,7 @@ export function useAuthToken() {
     const logout = () => {
         localStorage.removeItem(STORAGE_TOKEN)
         setToken(null)
-        window.location = routes.login
-        navigate(routes.login)
+        navigate(routes.f1Schedule)
     }
 
     return { login, logout }
