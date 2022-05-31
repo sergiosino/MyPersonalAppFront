@@ -3,7 +3,7 @@ import { getToken, deleteToken } from "../utils/jwtToken"
 
 const getUrlApi = () => {
     const url = window.location.href
-    if(url.includes("github")) {
+    if(url.includes("vercel")) {
         return "https://mypersonalappapi.herokuapp.com/api"
     } else {
         return "https://localhost:44316/api"

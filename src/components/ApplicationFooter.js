@@ -15,7 +15,7 @@ export default function ApplicationFooter() {
                 <LinkNewTab underline="always" href="https://sergiosino.github.io/SimpleCardsGame/">
                     Website
                 </LinkNewTab>
-                {` ${new Date().getFullYear()}.`}
+                {`${new Date().getFullYear()}.`}
             </Typography>
         </Box>
     )
