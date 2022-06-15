@@ -14,8 +14,10 @@ function Offers() {
         getAllOffers().then(response => {
             setOffers(response.data)
         }).catch(ex => {
+            console.log(ex)
             toast.error("Error getting the actual offers")
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

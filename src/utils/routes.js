@@ -5,4 +5,5 @@ export const routes = {
     register: "/register",
     tasksConfig: "/tasksconfig",
     offers: "/offers",
+    videoGames: "/videogames"
 }

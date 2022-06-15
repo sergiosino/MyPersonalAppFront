@@ -5,8 +5,8 @@ export function useOffersActions() {
     const axiosWrapper = useAxiosWrapper()
     const urlApi = `${getUrlApi()}/Offers`
 
-    const getAllOffers = () => axiosWrapper.get(`${urlApi}/GetAll`)
-    const getBestOffer = () => axiosWrapper.get(`${urlApi}/GetBest`)
+    const getAllOffers = () => axiosWrapper.getAuth(`${urlApi}/GetAll`)
+    const getBestOffer = () => axiosWrapper.getAuth(`${urlApi}/GetBest`)
 
     return {
         getAllOffers,

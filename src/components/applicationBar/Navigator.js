@@ -15,6 +15,7 @@ import { routes } from 'utils/routes'
 import AuthContext from 'contexts/AuthContext'
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 import { ADMIN_EMAIL } from 'constants/constants'
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports'
 
 export default function Navigator(props) {
     const { ...other } = props
@@ -40,6 +41,21 @@ export default function Navigator(props) {
                                 <CalendarMonthIcon />
                             </ListItemIcon>
                             <ListItemText primary="Schedule" />
+                        </ListItemButton>
+                    </ListItem>
+                    <Divider sx={{ mt: 2 }} />
+                </Box>
+                {/* VIDEO GAMES */}
+                <Box>
+                    <ListItem sx={{ py: 2, px: 3 }}>
+                        <ListItemText>Video games</ListItemText>
+                    </ListItem>
+                    <ListItem disablePadding>
+                        <ListItemButton sx={{ px: 3 }} onClick={() => navigate(routes.videoGames)}>
+                            <ListItemIcon>
+                                <SportsEsportsIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Coming games" />
                         </ListItemButton>
                     </ListItem>
                     <Divider sx={{ mt: 2 }} />

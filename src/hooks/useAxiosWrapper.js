@@ -7,14 +7,15 @@ export function useAxiosWrapper() {
     const { userInfo } = useContext(AuthContext)
     const authToken = useAuthToken()
 
-    const request = (method) => {
+    const requestAuth = (method, auth) => {
         return (url, body) => {
-            const config = {
+            let config = {
                 url: url,
                 method: method,
-                headers: authorizationHeader(),
+                headers: auth ? authorizationHeader() : null,
                 data: body
             }
+            
             return axios.request(config).catch((ex) => {
                 console.log(ex)
                 if (ex.response.status === 401)
@@ -33,9 +34,13 @@ export function useAxiosWrapper() {
     }
 
     return {
-        get: request("get"),
-        post: request("post"),
-        put: request("put"),
-        delete: request("delete")
+        get: requestAuth("get", false),
+        post: requestAuth("post", false),
+        put: requestAuth("put", false),
+        delete: requestAuth("delete", false),
+        getAuth: requestAuth("get", true),
+        postAuth: requestAuth("post", true),
+        putAuth: requestAuth("put", true),
+        deleteAuth: requestAuth("delete", true)
     }
 }

@@ -24,6 +24,7 @@ export default function TasksConfig() {
         putTasksConfig(data).then(() => {
             toast.success("Tasks configuration saved")
         }).catch(ex => {
+            console.log(ex)
             toast.error("Error saving tasks config")
         })
     }
@@ -32,6 +33,7 @@ export default function TasksConfig() {
         getTasksConfig().then(response => {
             reset(response.data)
         }).catch(ex => {
+            console.log(ex)
             toast.error("Error getting tasks configuration")
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
