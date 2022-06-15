@@ -4,7 +4,7 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
-import { formatDatePretty } from '../../../utils/formatDates'
+import { formatDatePretty } from 'utils/formatDates'
 
 export default function PreRaceInfo(props) {
     const { race } = props

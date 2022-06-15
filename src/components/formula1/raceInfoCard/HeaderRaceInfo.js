@@ -4,8 +4,8 @@ import SportsScoreIcon from '@mui/icons-material/SportsScore'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import LinkNewTab from '../LinkNewTab'
-import { raceStatusEnum } from "../../../constants/enums"
-import { formatDatePretty } from '../../../utils/formatDates'
+import { raceStatusEnum } from "constants/enums"
+import { formatDatePretty } from 'utils/formatDates'
 
 export default function HeaderRaceInfo(props) {
     const { race, raceStatus } = props

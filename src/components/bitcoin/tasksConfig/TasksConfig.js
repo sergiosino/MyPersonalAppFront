@@ -3,9 +3,9 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
-import { get, put } from '../../../actions/actions'
 import { useForm, Controller } from 'react-hook-form'
 import { toast } from 'react-toastify'
+import { useTasksConfigActions } from "hooks/actions/useTasksConfigActions"
 
 const tasksConfigDefault = {
     bestOfferMinPercentage: 0,
@@ -17,29 +17,23 @@ const tasksConfigDefault = {
 }
 
 export default function TasksConfig() {
+    const { getTasksConfig, putTasksConfig } = useTasksConfigActions();
     const { control, handleSubmit, reset } = useForm({ defaultValues: tasksConfigDefault })
-    const taskConfigId = "otairh8hcDx0lgjkg60l"
-
-    const getTasksConfig = () => {
-        get().tasksConfig(taskConfigId).then(response => {
-            reset(response.data)
-        }).catch(ex => {
-            toast.error("Error getting tasks configuration")
-            console.log(ex)
-        })
-    }
 
     const saveTasksConfig = (data) => {
-        put().tasksConfig(taskConfigId, data).then(response => {
+        putTasksConfig(data).then(() => {
             toast.success("Tasks configuration saved")
         }).catch(ex => {
             toast.error("Error saving tasks config")
-            console.log(ex)
         })
     }
 
     React.useEffect(() => {
-        getTasksConfig()
+        getTasksConfig().then(response => {
+            reset(response.data)
+        }).catch(ex => {
+            toast.error("Error getting tasks configuration")
+        })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

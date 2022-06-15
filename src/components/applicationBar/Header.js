@@ -5,15 +5,15 @@ import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
 import Toolbar from '@mui/material/Toolbar'
 import LogoutIcon from '@mui/icons-material/Logout'
-import ToggleColorModeContext from '../../contexts/ToggleColorModeContext'
+import ToggleColorModeContext from 'contexts/ToggleColorModeContext'
 import { useTheme } from '@mui/material/styles'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
-import { useAuthToken } from '../../hooks/useAuthToken'
-import AuthTokenContext from '../../contexts/AuthTokenContext'
+import { useAuthToken } from 'hooks/useAuthToken'
+import AuthContext from 'contexts/AuthContext'
 import Button from '@mui/material/Button'
 import { useNavigate } from "react-router-dom"
-import { routes } from '../../utils/routes'
+import { routes } from 'utils/routes'
 
 function Header(props) {
     const { onDrawerToggle } = props
@@ -22,7 +22,7 @@ function Header(props) {
     const theme = useTheme()
     const navigate = useNavigate()
     const { logout } = useAuthToken()
-    const { token } = React.useContext(AuthTokenContext)
+    const { userInfo } = React.useContext(AuthContext)
 
     const handleSignOut = () => {
         logout()
@@ -53,7 +53,7 @@ function Header(props) {
                         </IconButton>
                     </Grid>
                     <Grid item>
-                        {token ?
+                        {userInfo ?
                             <IconButton
                                 size="large"
                                 aria-label="account of current user"
@@ -65,7 +65,7 @@ function Header(props) {
                             <Button
                                 color="inherit"
                                 onClick={() => navigate(routes.login)}>
-                                Login
+                                Sign in
                             </Button>
                         }
                     </Grid>

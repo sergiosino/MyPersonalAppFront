@@ -10,18 +10,18 @@ import Grid from '@mui/material/Grid'
 import { routes } from 'utils/routes'
 import { useNavigate } from "react-router-dom"
 
-export default function Login() {
-    const { signIn } = useAuthToken()
+export default function Register() {
+    const { signUp } = useAuthToken()
     const navigate = useNavigate()
 
     const handleSubmit = (event) => {
         event.preventDefault()
         const data = new FormData(event.currentTarget)
-        signIn(data.get('email'), data.get('password'))
+        signUp(data.get('email'), data.get('password'))
     }
 
-    const handleNotHaveAccount = () => {
-        navigate(routes.register)
+    const handleAlreadyHaveAccount = () => {
+        navigate(routes.login)
     }
 
     return (
@@ -53,7 +53,7 @@ export default function Login() {
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
                 >
-                    Sign In
+                    Sign Up
                 </Button>
                 <Grid container justifyContent="flex-end">
                     {/* <Grid item xs>
@@ -62,8 +62,8 @@ export default function Login() {
                         </Link>
                     </Grid> */}
                     <Grid item>
-                        <Link type="button" component="button" onClick={handleNotHaveAccount} variant="body2">
-                            {"Don't have an account? Sign Up"}
+                        <Link type="button" component="button" onClick={handleAlreadyHaveAccount} variant="body2">
+                            {"Do you already have an account? Log in"}
                         </Link>
                     </Grid>
                 </Grid>

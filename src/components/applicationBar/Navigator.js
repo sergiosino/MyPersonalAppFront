@@ -9,21 +9,23 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import SettingsIcon from '@mui/icons-material/Settings'
 import LocalOfferIcon from '@mui/icons-material/LocalOffer'
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import { useNavigate } from "react-router-dom"
-import { routes } from '../../utils/routes'
-import LoginIcon from '@mui/icons-material/Login'
-import AuthTokenContext from '../../contexts/AuthTokenContext'
+import { routes } from 'utils/routes'
+import AuthContext from 'contexts/AuthContext'
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
+import { ADMIN_EMAIL } from 'constants/constants'
 
 export default function Navigator(props) {
     const { ...other } = props
 
     const navigate = useNavigate()
-    const { token } = React.useContext(AuthTokenContext)
+    const { userInfo } = React.useContext(AuthContext)
 
     return (
         <Drawer variant="permanent" {...other}>
-            <List>
-                <ListItem sx={{ py: 1.4, px: 3, fontSize: 22 }}>
+            <List sx={{ py: 0 }}>
+                <ListItem sx={{ py: 0.9, px: 3, fontSize: 22 }}>
                     My personal app
                 </ListItem>
                 <Divider />
@@ -35,37 +37,57 @@ export default function Navigator(props) {
                     <ListItem disablePadding>
                         <ListItemButton sx={{ px: 3 }} onClick={() => navigate(routes.f1Schedule)}>
                             <ListItemIcon>
-                                <LocalOfferIcon />
+                                <CalendarMonthIcon />
                             </ListItemIcon>
                             <ListItemText primary="Schedule" />
                         </ListItemButton>
                     </ListItem>
                     <Divider sx={{ mt: 2 }} />
                 </Box>
-                {/* HODLHODL - BITCOIN */}
-                {token && (
-                    <Box>
-                        <ListItem sx={{ py: 2, px: 3 }}>
-                            <ListItemText>HodlHodl</ListItemText>
-                        </ListItem>
-                        <ListItem disablePadding>
-                            <ListItemButton sx={{ px: 3 }} onClick={() => navigate(routes.offers)}>
-                                <ListItemIcon>
-                                    <LocalOfferIcon />
-                                </ListItemIcon>
-                                <ListItemText primary="Offers" />
-                            </ListItemButton>
-                        </ListItem>
-                        <ListItem disablePadding>
-                            <ListItemButton sx={{ px: 3 }} onClick={() => navigate(routes.tasksConfig)}>
-                                <ListItemIcon>
-                                    <SettingsIcon />
-                                </ListItemIcon>
-                                <ListItemText primary="Trasks config" />
-                            </ListItemButton>
-                        </ListItem>
-                        <Divider sx={{ mt: 2 }} />
-                    </Box>
+                {/* SIGNED USERS */}
+                {userInfo && (
+                    <>
+                        {/* HODLHODL - BITCOIN */}
+                        <Box>
+                            <ListItem sx={{ py: 2, px: 3 }}>
+                                <ListItemText>HodlHodl</ListItemText>
+                            </ListItem>
+                            <ListItem disablePadding>
+                                <ListItemButton sx={{ px: 3 }} onClick={() => navigate(routes.offers)}>
+                                    <ListItemIcon>
+                                        <LocalOfferIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Offers" />
+                                </ListItemButton>
+                            </ListItem>
+                            {userInfo.email === ADMIN_EMAIL && (
+                                <ListItem disablePadding>
+                                    <ListItemButton sx={{ px: 3 }} onClick={() => navigate(routes.tasksConfig)}>
+                                        <ListItemIcon>
+                                            <SettingsIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Trasks config" />
+                                    </ListItemButton>
+                                </ListItem>
+                            )}
+                            <Divider sx={{ mt: 2 }} />
+                        </Box>
+                        {/* BANK ACCOUNTS */}
+                        <Box>
+                            <ListItem sx={{ py: 2, px: 3 }}>
+                                <ListItemText>Bank accounts</ListItemText>
+                            </ListItem>
+                            <ListItem disablePadding>
+                                <ListItemButton sx={{ px: 3 }} onClick={() => navigate(routes.f1Schedule)}>
+                                    <ListItemIcon>
+                                        <AccountBalanceIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Banks" />
+                                </ListItemButton>
+                            </ListItem>
+                            <Divider sx={{ mt: 2 }} />
+                        </Box>
+                    </>
                 )}
             </List>
         </Drawer>

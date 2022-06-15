@@ -1,7 +1,8 @@
 
 export const routes = {
-    login: "/login",
-    tasksConfig: "/tasksConfig",
-    offers: "/offers",
     f1Schedule: "/",
+    login: "/login",
+    register: "/register",
+    tasksConfig: "/tasksconfig",
+    offers: "/offers",
 }

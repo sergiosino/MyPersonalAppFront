@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
-import getDesignTheme from '../theme/Theme'
+import getDesignTheme from 'theme/Theme'
 
 const ToggleColorModeContext = React.createContext({ toggleColorMode: () => { } })
 
