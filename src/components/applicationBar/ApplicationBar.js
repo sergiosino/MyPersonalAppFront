@@ -27,7 +27,7 @@ export default function ApplicationBar(props) {
                     onClose={handleDrawerToggle} />
                 <Navigator
                     PaperProps={{ style: { width: drawerWidth } }}
-                    sx={{ display: { md: 'block', sm: 'none', xs: 'none' } }} />
+                    sx={{ display: { md: 'block', xs: 'none' } }} />
             </Box>
             <Header onDrawerToggle={handleDrawerToggle} />
             {children}

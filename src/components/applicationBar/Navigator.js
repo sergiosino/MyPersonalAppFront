@@ -18,13 +18,18 @@ import { ADMIN_EMAIL } from 'constants/constants'
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports'
 
 export default function Navigator(props) {
-    const { ...other } = props
+    const { onClose, ...other } = props
 
     const navigate = useNavigate()
     const { userInfo } = React.useContext(AuthContext)
 
+    const handleSelectItem = (route) => () => {
+        onClose()
+        navigate(route)
+    }
+
     return (
-        <Drawer variant="permanent" {...other}>
+        <Drawer variant="permanent" onClose={onClose} {...other}>
             <List sx={{ py: 0 }}>
                 <ListItem sx={{ py: 0.9, px: 3, fontSize: 22 }}>
                     My personal app
@@ -36,7 +41,7 @@ export default function Navigator(props) {
                         <ListItemText>Formula 1</ListItemText>
                     </ListItem>
                     <ListItem disablePadding>
-                        <ListItemButton sx={{ px: 3 }} onClick={() => navigate(routes.f1Schedule)}>
+                        <ListItemButton sx={{ px: 3 }} onClick={handleSelectItem(routes.f1Schedule)}>
                             <ListItemIcon>
                                 <CalendarMonthIcon />
                             </ListItemIcon>
@@ -51,7 +56,7 @@ export default function Navigator(props) {
                         <ListItemText>Video games</ListItemText>
                     </ListItem>
                     <ListItem disablePadding>
-                        <ListItemButton sx={{ px: 3 }} onClick={() => navigate(routes.videoGames)}>
+                        <ListItemButton sx={{ px: 3 }} onClick={handleSelectItem(routes.releasesDates)}>
                             <ListItemIcon>
                                 <SportsEsportsIcon />
                             </ListItemIcon>
@@ -69,7 +74,7 @@ export default function Navigator(props) {
                                 <ListItemText>HodlHodl</ListItemText>
                             </ListItem>
                             <ListItem disablePadding>
-                                <ListItemButton sx={{ px: 3 }} onClick={() => navigate(routes.offers)}>
+                                <ListItemButton sx={{ px: 3 }} onClick={handleSelectItem(routes.offers)}>
                                     <ListItemIcon>
                                         <LocalOfferIcon />
                                     </ListItemIcon>
@@ -78,7 +83,7 @@ export default function Navigator(props) {
                             </ListItem>
                             {userInfo.email === ADMIN_EMAIL && (
                                 <ListItem disablePadding>
-                                    <ListItemButton sx={{ px: 3 }} onClick={() => navigate(routes.tasksConfig)}>
+                                    <ListItemButton sx={{ px: 3 }} onClick={handleSelectItem(routes.tasksConfig)}>
                                         <ListItemIcon>
                                             <SettingsIcon />
                                         </ListItemIcon>
@@ -94,7 +99,7 @@ export default function Navigator(props) {
                                 <ListItemText>Bank accounts</ListItemText>
                             </ListItem>
                             <ListItem disablePadding>
-                                <ListItemButton sx={{ px: 3 }} onClick={() => navigate(routes.f1Schedule)}>
+                                <ListItemButton sx={{ px: 3 }} onClick={handleSelectItem(routes.banks)}>
                                     <ListItemIcon>
                                         <AccountBalanceIcon />
                                     </ListItemIcon>
