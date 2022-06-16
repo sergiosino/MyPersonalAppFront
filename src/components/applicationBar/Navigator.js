@@ -24,7 +24,8 @@ export default function Navigator(props) {
     const { userInfo } = React.useContext(AuthContext)
 
     const handleSelectItem = (route) => () => {
-        onClose()
+        if (onClose)
+            onClose()
         navigate(route)
     }
 

@@ -63,6 +63,7 @@ export default function ReleaseDates() {
             setReleaseDates(response.data)
         }).catch((ex) => {
             console.log(ex)
+            setReleaseDates([])
             toast.error("Error getting the coming video games")
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
