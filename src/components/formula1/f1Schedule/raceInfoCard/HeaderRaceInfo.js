@@ -9,12 +9,12 @@ import { formatDatePretty } from 'utils/formatDates'
 import Skeleton from "@mui/material/Skeleton"
 
 export default function HeaderRaceInfo(props) {
-    const { race, raceStatus } = props
+    const { race } = props
 
     const getRaceIcon = () => {
-        if (raceStatus === raceStatusEnum.past)
+        if (race.raceStatus === raceStatusEnum.past)
             return <CheckCircleIcon sx={{ color: "darkgreen" }} fontSize="small" />
-        else if (raceStatus === raceStatusEnum.next)
+        else if (race.raceStatus === raceStatusEnum.next)
             return <SportsScoreIcon />
     }
 

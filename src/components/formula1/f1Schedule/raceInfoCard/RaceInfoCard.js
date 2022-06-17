@@ -15,7 +15,7 @@ import { qualyTableCols, raceTableCols } from "../tablesCols"
 import Skeleton from "@mui/material/Skeleton"
 
 export default function RaceInfoCard(props) {
-    const { race, raceStatus, year } = props
+    const { race, year } = props
 
     const [expanded, setExpanded] = React.useState(false)
     const [qualyResults, setQualyResults] = React.useState(null)
@@ -57,7 +57,7 @@ export default function RaceInfoCard(props) {
                 <Grid container spacing={1}>
                     {/* Header with race name, date and other info */}
                     <Grid item xs={12}>
-                        <HeaderRaceInfo race={race} raceStatus={raceStatus} />
+                        <HeaderRaceInfo race={race} />
                     </Grid>
                     {/* Practice and qualifying dates */}
                     <Grid item xs={12}>

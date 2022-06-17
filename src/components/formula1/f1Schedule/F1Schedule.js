@@ -8,31 +8,39 @@ import SportsMotorsportsIcon from '@mui/icons-material/SportsMotorsports'
 import Fab from '@mui/material/Fab'
 import Zoom from '@mui/material/Zoom'
 
-function F1Schedule() {
+export default function F1Schedule() {
     const [races, setRaces] = React.useState(Array.from(new Array(15)))
+    const nextRaceCardRef = React.useRef(null)
 
-    let nextRaceFound = null
-    const actualYear = new Date().getFullYear()
-
-    const getRaceStatus = (race) => {
-        const todayPlus3h = new Date().setHours(new Date().getHours() + 3)
-        if (new Date(race.date) > todayPlus3h) {
-            if (!nextRaceFound) {
-                nextRaceFound = document.getElementById(`${race.Circuit.circuitId}-raceInfoCard`)
-                return raceStatusEnum.next
-            }
-            return raceStatusEnum.future
-        }
-        return raceStatusEnum.past
-    }
+    const year = new Date().getFullYear()
 
     const handleNextRaceClick = () => {
-        nextRaceFound.scrollIntoView()
+        nextRaceCardRef.current.scrollIntoView()
+    }
+
+    const sortRacesByDate = (response) => {
+        let nextRaceFound = false
+        const todayPlus3h = new Date().setHours(new Date().getHours() + 3)
+
+        response.data.MRData.RaceTable.Races.forEach(race => {
+            if (new Date(race.date) > todayPlus3h) {
+                if (!nextRaceFound) {
+                    race.raceStatus = raceStatusEnum.next
+                    nextRaceFound = true
+                } else {
+                    race.raceStatus = raceStatusEnum.future
+                }
+            } else {
+                race.raceStatus = raceStatusEnum.past
+            }
+        });
+
+        return response.data.MRData.RaceTable.Races
     }
 
     React.useEffect(() => {
-        axios.get(`https://ergast.com/api/f1/${actualYear}.json`).then(response => {
-            setRaces(response.data.MRData.RaceTable.Races)
+        axios.get(`https://ergast.com/api/f1/${year}.json`).then(response => {
+            setRaces(sortRacesByDate(response))
         }).catch(ex => {
             console.log(ex)
         })
@@ -45,8 +53,14 @@ function F1Schedule() {
                     {console.log("races", races)}
                     {races.map((race, index) =>
                         race ? (
-                            <Grid id={`${race.Circuit.circuitId}-raceInfoCard`} key={race.Circuit.circuitId} item xs={12}>
-                                <RaceInfoCard race={race} raceStatus={getRaceStatus(race)} year={actualYear} />
+                            <Grid
+                                key={race.Circuit.circuitId}
+                                item 
+                                xs={12}
+                                sx={{ scrollMargin: 100 }}
+                                ref={race.raceStatus === raceStatusEnum.next ? nextRaceCardRef : null}
+                            >
+                                <RaceInfoCard race={race} year={year} />
                             </Grid>
                         ) : (
                             <Grid key={index} item xs={12}>
@@ -70,5 +84,3 @@ function F1Schedule() {
         </>
     )
 }
-
-export default F1Schedule
