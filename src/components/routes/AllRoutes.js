@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { routes } from 'utils/routes'
 import AuthContext from 'contexts/AuthContext'
-import { Route, Routes, useNavigate } from "react-router-dom"
+import { Route, Routes, useNavigate, Navigate } from "react-router-dom"
 import Login from 'components/login/Login'
 import Register from 'components/register/Register'
 import TasksConfig from 'components/bitcoin/tasksConfig/TasksConfig'
@@ -25,6 +25,7 @@ function RequireAuth(props) {
 export default function AllRoutes() {
     return (
         <Routes>
+            <Route path={routes.index} element={<Navigate to={routes.f1Schedule} replace />} />
             <Route path={routes.login} element={<Login />} />
             <Route path={routes.register} element={<Register />} />
             <Route path={routes.f1Schedule} element={<F1Schedule />} />
@@ -32,7 +33,7 @@ export default function AllRoutes() {
             <Route path={routes.offers} element={<RequireAuth><Offers /></RequireAuth>} />
             <Route path={routes.tasksConfig} element={<RequireAuth><TasksConfig /></RequireAuth>} />
             <Route path={routes.banks} element={<RequireAuth><PageWorkInProgress /></RequireAuth>} />
-            <Route path="*" element={<Page404/>} />
+            <Route path="*" element={<Page404 />} />
         </Routes>
     )
 }

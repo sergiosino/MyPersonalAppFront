@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid'
 import LinkNewTab from '../LinkNewTab'
 import { raceStatusEnum } from "constants/enums"
 import { formatDatePretty } from 'utils/formatDates'
+import Skeleton from "@mui/material/Skeleton"
 
 export default function HeaderRaceInfo(props) {
     const { race, raceStatus } = props
@@ -18,7 +19,7 @@ export default function HeaderRaceInfo(props) {
     }
 
     return (
-        <Grid item container xs={12} spacing={1}>
+        <Grid container spacing={1}>
             <Grid item xs={12} sm={6} lg={8}>
                 <Grid item container xs={12} spacing={1} alignItems="center">
                     <Grid item>
@@ -44,6 +45,26 @@ export default function HeaderRaceInfo(props) {
                 <Typography variant="body2">
                     Circuit name: <LinkNewTab href={race.Circuit?.url}>{race.Circuit.circuitName}</LinkNewTab>
                 </Typography>
+            </Grid>
+        </Grid>
+    )
+}
+
+export function HeaderRaceInfoSkeleton() {
+    return (
+        <Grid container spacing={1}>
+            <Grid item xs={12} sm={6} lg={8}>
+                <Grid item container xs={12} spacing={1} alignItems="center">
+                    <Grid item xs>
+                        <Skeleton variant="text" height={27} width="50%" />
+                    </Grid>
+                </Grid>
+                <Skeleton variant="text" height={17} width="30%" />
+            </Grid>
+            <Grid item xs={12} sm={6} lg={4}>
+                <Skeleton variant="text" height={16} width="40%" />
+                <Skeleton variant="text" height={16} width="30%" />
+                <Skeleton variant="text" height={16} width="70%" />
             </Grid>
         </Grid>
     )

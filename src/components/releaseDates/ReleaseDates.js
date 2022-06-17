@@ -3,8 +3,7 @@ import Typography from "@mui/material/Typography"
 import Grid from "@mui/material/Grid"
 import { toast } from "react-toastify"
 import { useVideoGamesActions } from "hooks/actions/useVideoGamesActions"
-import ReleaseDateCard from "components/releaseDates/releaseDateCard/ReleaseDateCard"
-import ReleaseDateCardSkeleton from "components/releaseDates/releaseDateCard/ReleaseDateCardSkeleton"
+import ReleaseDateCard, { ReleaseDateCardSkeleton } from "components/releaseDates/releaseDateCard/ReleaseDateCard"
 
 export default function ReleaseDates() {
     const [releaseDates, setReleaseDates] = React.useState(Array.from(new Array(21)))
@@ -28,16 +27,20 @@ export default function ReleaseDates() {
             <Grid container spacing={3}>
                 {releaseDates.map((releaseDate, index) =>
                     releaseDate ? (
-                        <ReleaseDateCard
-                            key={releaseDate.id}
-                            id={releaseDate.id}
-                            name={releaseDate.game.name}
-                            coverUrl={releaseDate.game.cover?.url ?? null}
-                            releaseDate={releaseDate.releaseDate}
-                            platformNames={releaseDate.platformShortNames}
-                        />
+                        <Grid item xs={12} sm={6} md={4}>
+                            <ReleaseDateCard
+                                key={releaseDate.id}
+                                id={releaseDate.id}
+                                name={releaseDate.game.name}
+                                coverUrl={releaseDate.game.cover?.url ?? null}
+                                releaseDate={releaseDate.releaseDate}
+                                platformNames={releaseDate.platformShortNames}
+                            />
+                        </Grid >
                     ) : (
-                        <ReleaseDateCardSkeleton key={index} />
+                        <Grid item xs={12} sm={6} md={4}>
+                            <ReleaseDateCardSkeleton key={index} />
+                        </Grid >
                     )
                 )}
             </Grid>

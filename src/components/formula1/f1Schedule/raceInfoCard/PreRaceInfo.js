@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent'
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
 import { formatDatePretty } from 'utils/formatDates'
+import Skeleton from "@mui/material/Skeleton"
 
 export default function PreRaceInfo(props) {
     const { race } = props
@@ -76,11 +77,31 @@ export default function PreRaceInfo(props) {
     }
 
     return (
-        <Grid item container xs={12} spacing={1}>
+        <Grid container spacing={1}>
             <Grid item xs={12} sm={6} md={3}>
                 {firstPractice()}
             </Grid>
             {race.Sprint ? raceWithSprint() : raceWithoutSprint()}
+        </Grid>
+    )
+}
+
+
+export function PreRaceInfoSkeleton() {
+    return (
+        <Grid container spacing={1}>
+            <Grid item xs={12} sm={6} md={3}>
+                <Skeleton variant="rectangular" height={97} sx={{ borderRadius: 1 }} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+                <Skeleton variant="rectangular" height={97} sx={{ borderRadius: 1 }} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+                <Skeleton variant="rectangular" height={97} sx={{ borderRadius: 1 }} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+                <Skeleton variant="rectangular" height={97} sx={{ borderRadius: 1 }} />
+            </Grid>
         </Grid>
     )
 }

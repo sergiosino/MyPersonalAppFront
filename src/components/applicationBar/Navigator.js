@@ -27,6 +27,7 @@ export default function Navigator(props) {
         if (onClose)
             onClose()
         navigate(route)
+        document.documentElement.scrollTop = 0
     }
 
     return (
