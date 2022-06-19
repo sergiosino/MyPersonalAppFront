@@ -7,7 +7,7 @@ import Container from '@mui/material/Container'
 import { useAuthToken } from 'hooks/useAuthToken'
 import Link from '@mui/material/Link'
 import Grid from '@mui/material/Grid'
-import { routes } from 'utils/routes'
+import { routes } from 'constants/routes'
 import { useNavigate } from "react-router-dom"
 
 export default function Login() {

@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { useNavigate } from "react-router-dom"
-import { routes } from 'utils/routes'
+import { routes } from 'constants/routes'
 import jwt from 'jwt-decode'
 import { toast } from 'react-toastify'
 import { STORAGE_TOKEN } from 'constants/constants'

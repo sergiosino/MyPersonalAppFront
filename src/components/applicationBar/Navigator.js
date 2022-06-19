@@ -11,7 +11,7 @@ import SettingsIcon from '@mui/icons-material/Settings'
 import LocalOfferIcon from '@mui/icons-material/LocalOffer'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import { useNavigate } from "react-router-dom"
-import { routes } from 'utils/routes'
+import { routes } from 'constants/routes'
 import AuthContext from 'contexts/AuthContext'
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 import { ADMIN_EMAIL } from 'constants/constants'

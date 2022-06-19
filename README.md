@@ -1,10 +1,13 @@
 npm i axios\
 npm i react-toastify\
 npm i react-router-dom\
-npm install @mui/material @emotion/react @emotion/styled\
-npm install @mui/icons-material\
+npm i @mui/material @emotion/react @emotion/styled\
+npm i @mui/icons-material\
 npm i react-hook-form\
+npm i @hookform/resolvers\
 npm i jwt-decode\
+npm i @mui/lab\
+npm i yup\
 
 # Getting Started with Create React App
 

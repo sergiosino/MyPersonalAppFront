@@ -50,7 +50,6 @@ export default function F1Schedule() {
         <>
             <Box sx={{ position: "relative" }}>
                 <Grid container spacing={3}>
-                    {console.log("races", races)}
                     {races.map((race, index) =>
                         race ? (
                             <Grid
