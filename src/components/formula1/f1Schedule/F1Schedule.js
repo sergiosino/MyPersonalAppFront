@@ -21,7 +21,7 @@ export default function F1Schedule() {
     const sortRacesByDate = (response) => {
         let nextRaceFound = false
         const todayPlus3h = new Date().setHours(new Date().getHours() + 3)
-        debugger
+
         response.data.MRData.RaceTable.Races.forEach(race => {
             if (new Date(`${race.date}T${race.time}`) > todayPlus3h) {
                 if (!nextRaceFound) {
