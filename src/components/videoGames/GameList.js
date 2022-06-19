@@ -6,7 +6,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 const LOADING_NUMBER_GAMES = 25
 
 export default function GamesList(props) {
-    const { games, setPage, loadingNextPage, loadingGames } = props;
+    const { games, setPage, loadingNextPage, loadingGames, isLastPage } = props;
 
     const handleNextPage = () => {
         setPage((prevPage) => prevPage + 1)
@@ -25,19 +25,21 @@ export default function GamesList(props) {
                                 releaseDate={game.releaseDates[0].releaseDate}
                                 platformNames={game.releaseDates[0].platformShortNames}
                             />
-                        </Grid >
+                        </Grid>
                     ) : (
                         <Grid key={index} item xs={12} sm={6} lg={4}>
                             <ReleaseDateCardSkeleton />
-                        </Grid >
+                        </Grid>
                     )
                 )}
             </Grid>
-            <Box sx={{ p: 5, textAlign: "center" }}>
-                <LoadingButton variant="contained" loading={loadingNextPage} onClick={handleNextPage}>
-                    Load more
-                </LoadingButton>
-            </Box>
+            {!loadingGames && games.length > 0 && !isLastPage &&
+                <Box sx={{ p: 5, textAlign: "center" }}>
+                    <LoadingButton variant="contained" loading={loadingNextPage} onClick={handleNextPage}>
+                        Load more
+                    </LoadingButton>
+                </Box>
+            }
         </>
     )
 }

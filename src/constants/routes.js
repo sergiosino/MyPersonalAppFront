@@ -8,5 +8,5 @@ export const routes = {
     offers: "/offers",
     releasesDates: "/releasesdates",
     banks: "/banks",
-    searchResults: "/searchresults/:keyword/:platformId"
+    searchResults: "/searchresults/:keyword"
 }

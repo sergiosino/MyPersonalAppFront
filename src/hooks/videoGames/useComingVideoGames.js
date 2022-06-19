@@ -10,6 +10,7 @@ export function useComingVideoGames() {
     const [page, setPage] = useState(INITIAL_PAGE)
     const [loadingNextPage, setLoadingNextPage] = useState(false)
     const [loadingGames, setLoadingGames] = useState(false)
+    const [isLastPage, setIsLastPage] = useState(false)
     const axiosWrapper = useAxiosWrapper()
     const urlApi = `${getUrlApi()}/VideoGames`
 
@@ -33,7 +34,10 @@ export function useComingVideoGames() {
 
         setLoadingNextPage(true)
         getComingVideoGames(page).then(response => {
-            setComingVideoGames((prevComingVideoGames) => prevComingVideoGames.concat(response.data))
+            if (response.data.length > 0)
+                setComingVideoGames((prevComingVideoGames) => prevComingVideoGames.concat(response.data))
+            else
+                setIsLastPage(true)
             setLoadingNextPage(false)
         }).catch((ex) => {
             console.log(ex)
@@ -41,12 +45,13 @@ export function useComingVideoGames() {
             toast.error("Error getting the next page of coming video games")
             setLoadingNextPage(false)
         })
-    }, [page, setComingVideoGames, setLoadingNextPage])
+    }, [page, setComingVideoGames, setLoadingNextPage, setIsLastPage])
 
     return {
         loadingGames,
         comingVideoGames,
         loadingNextPage,
-        setPage
+        setPage,
+        isLastPage
     }
 }

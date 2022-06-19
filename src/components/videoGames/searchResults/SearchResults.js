@@ -1,22 +1,29 @@
 import * as React from "react"
-import { Typography } from "@mui/material"
+import { Grid } from "@mui/material"
 import SearchForm from "../SearchForm"
 import GamesList from "../GameList"
 import { useSearchGames } from "hooks/videoGames/useSearchGames"
 import { useParams } from "react-router-dom"
 
 export default function SearchResults() {
-    const { platformId, keyword } = useParams()
-    const { searchGames, loadingSearch } = useSearchGames({ platformId, keyword })
+    const { keyword } = useParams()
+    const { searchGames, loadingSearch, setPage, loadingNextPage, isLastPage } = useSearchGames({ keyword })
 
     return (
-        <>
-            <SearchForm />
-            <Typography variant="h5" sx={{ my: 2 }}>
-                Search results
-            </Typography>
-            <GamesList games={searchGames} loadingGames={loadingSearch} />
-        </>
+        <Grid container spacing={3}>
+            <Grid item xs={12}>
+                <SearchForm />
+            </Grid>
+            <Grid item xs={12}>
+                <GamesList
+                    games={searchGames}
+                    loadingGames={loadingSearch}
+                    setPage={setPage}
+                    loadingNextPage={loadingNextPage}
+                    isLastPage={isLastPage}
+                />
+            </Grid>
+        </Grid>
     )
 }
 

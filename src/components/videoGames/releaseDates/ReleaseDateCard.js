@@ -34,10 +34,10 @@ export default function ReleaseDateCard(props) {
                     <b>{name}</b>
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    Platform: {platformNames}
+                    Platform: {platformNames ?? "Unknown"}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    Date: {releaseDate}
+                    First release: {releaseDate  ?? "Unknown"}
                 </Typography>
             </CardContent>
             <IconButton sx={{ position: "absolute", bottom: 0, right: 0 }} aria-label="Fav" onClick={handleFavClick}>

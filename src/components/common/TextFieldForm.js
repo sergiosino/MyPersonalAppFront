@@ -4,13 +4,14 @@ import { Controller } from 'react-hook-form'
 
 export default function TextFieldForm(props) {
     const { control, name, label, errors } = props
-    debugger
+
     return (
         <Controller
             name={name}
             control={control}
             render={({ field: { onChange, value } }) =>
                 <TextField
+                    sx={{h: 10}}
                     size="small"
                     onChange={onChange}
                     value={value}

@@ -6,31 +6,58 @@ import { toast } from "react-toastify"
 const INITIAL_PAGE = 1
 
 export function useSearchGames(props) {
-    const { keyword, platformId } = props
+    const { keyword } = props
 
     const [searchGames, setSearchGames] = useState([])
     const [loadingSearch, setLoadingSearch] = useState(false)
+    const [page, setPage] = useState(INITIAL_PAGE)
+    const [loadingNextPage, setLoadingNextPage] = useState(false)
+    const [isLastPage, setIsLastPage] = useState(false)
     const axiosWrapper = useAxiosWrapper()
     const urlApi = `${getUrlApi()}/VideoGames`
 
-    const searchGamesAction = (keyword, platformId, pageNumber) => axiosWrapper.get(`${urlApi}/Search?keyword=${keyword}&platformId=${platformId}&pageNumber=${pageNumber}`)
+    const searchGamesAction = (keyword, pageNumber) => axiosWrapper.get(`${urlApi}/Search?keyword=${keyword}&pageNumber=${pageNumber}`)
 
     useEffect(() => {
-        if (keyword === "" && platformId === "") return
+        if (keyword === "") return
+
         setLoadingSearch(true)
-        searchGamesAction(keyword, platformId, INITIAL_PAGE).then(response => {
+        searchGamesAction(keyword, INITIAL_PAGE).then(response => {
             setSearchGames(response.data)
             setLoadingSearch(false)
+            setIsLastPage(false)
         }).catch((ex) => {
             console.log(ex)
             setSearchGames([])
             toast.error("Error getting the result of the search")
             setLoadingSearch(false)
+            setIsLastPage(false)
         })
-    }, [setSearchGames, keyword, platformId])
+    }, [setSearchGames, keyword])
+
+    useEffect(() => {
+        if (page === INITIAL_PAGE) return
+
+        setLoadingNextPage(true)
+        searchGamesAction(keyword, page).then(response => {
+            if (response.data.length > 0)
+                setSearchGames((prevSearchGames) => prevSearchGames.concat(response.data))
+            else
+                setIsLastPage(true)
+            setLoadingNextPage(false)
+        }).catch((ex) => {
+            console.log(ex)
+            setSearchGames([])
+            toast.error("Error getting the result of the search")
+            setLoadingNextPage(false)
+        })
+    }, [page, setLoadingNextPage, setSearchGames])
 
     return {
         loadingSearch,
         searchGames,
+        setPage,
+        loadingNextPage,
+        isLastPage
     }
 }
