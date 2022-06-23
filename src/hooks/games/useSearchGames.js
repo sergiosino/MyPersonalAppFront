@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
-import { getUrlApi } from "hooks/actions/setting"
-import { useAxiosWrapper } from "hooks/useAxiosWrapper"
+import axiosInstance from "utils/axiosInstance"
 import { toast } from "react-toastify"
 
 const INITIAL_PAGE = 1
@@ -13,10 +12,8 @@ export function useSearchGames(props) {
     const [page, setPage] = useState(INITIAL_PAGE)
     const [loadingNextPage, setLoadingNextPage] = useState(false)
     const [isLastPage, setIsLastPage] = useState(false)
-    const axiosWrapper = useAxiosWrapper()
-    const urlApi = `${getUrlApi()}/VideoGames`
 
-    const searchGamesAction = (keyword, pageNumber) => axiosWrapper.get(`${urlApi}/Search?keyword=${keyword}&pageNumber=${pageNumber}`)
+    const searchGamesAction = (keyword, pageNumber) => axiosInstance.get(`/Search?keyword=${keyword}&pageNumber=${pageNumber}`)
 
     useEffect(() => {
         if (keyword === "") return

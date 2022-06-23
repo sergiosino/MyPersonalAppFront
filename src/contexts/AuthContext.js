@@ -14,8 +14,13 @@ export function AuthContextProvider({ children }) {
         setUser(stringifyData)
     }
 
+    const deleteUserInfo = () => {
+        localStorage.removeItem(STORAGE_TOKEN)
+        setUser(null)
+    }
+
     return (
-        <AuthContext.Provider value={{ userInfo, setUserInfo }}>
+        <AuthContext.Provider value={{ userInfo, setUserInfo, deleteUserInfo }}>
             {children}
         </AuthContext.Provider>
     )

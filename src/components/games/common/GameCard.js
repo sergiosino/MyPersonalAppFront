@@ -8,7 +8,7 @@ import IconButton from "@mui/material/IconButton"
 import FavoriteIcon from "@mui/icons-material/Favorite"
 import Skeleton from "@mui/material/Skeleton"
 
-export default function ReleaseDateCard(props) {
+export default function GameCard(props) {
     const { id, name, coverUrl, releaseDate, platformNames, favourite = false } = props
 
     const [fav, setFav] = React.useState(favourite)

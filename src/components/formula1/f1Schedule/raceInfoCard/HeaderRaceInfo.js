@@ -3,7 +3,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import SportsScoreIcon from '@mui/icons-material/SportsScore'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
-import LinkNewTab from '../LinkNewTab'
+import LinkNewTab from 'components/common/LinkNewTab'
 import { raceStatusEnum } from "constants/enums"
 import { formatDatePretty } from 'utils/formatDates'
 import Skeleton from "@mui/material/Skeleton"

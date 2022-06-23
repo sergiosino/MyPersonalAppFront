@@ -9,7 +9,7 @@ import ToggleColorModeContext from 'contexts/ToggleColorModeContext'
 import { useTheme } from '@mui/material/styles'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
-import { useAuthToken } from 'hooks/useAuthToken'
+import { useAuthToken } from 'hooks/user/useAuthToken'
 import AuthContext from 'contexts/AuthContext'
 import Button from '@mui/material/Button'
 import { useNavigate } from "react-router-dom"

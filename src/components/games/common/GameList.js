@@ -1,5 +1,5 @@
 import * as React from "react"
-import ReleaseDateCard, { ReleaseDateCardSkeleton } from "./releaseDates/ReleaseDateCard"
+import GameCard, { ReleaseDateCardSkeleton } from "./GameCard"
 import { Grid, Box } from "@mui/material"
 import LoadingButton from '@mui/lab/LoadingButton';
 
@@ -18,7 +18,7 @@ export default function GamesList(props) {
                 {(loadingGames ? Array.from(new Array(LOADING_NUMBER_GAMES)) : games).map((game, index) =>
                     game ? (
                         <Grid key={game.id} item xs={12} sm={6} lg={4}>
-                            <ReleaseDateCard
+                            <GameCard
                                 id={game.id}
                                 name={game.name}
                                 coverUrl={game.cover?.url ?? null}

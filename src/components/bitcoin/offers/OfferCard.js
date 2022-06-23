@@ -7,7 +7,7 @@ import CardMedia from '@mui/material/CardMedia'
 
 function OfferCard(props) {
     const { offer } = props
-
+    console.log("offer", offer)
     return (
         <Grid item xs={12}>
                 <Card sx={{ display: 'flex' }}>

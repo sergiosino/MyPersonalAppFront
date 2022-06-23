@@ -1,20 +1,17 @@
 import { useEffect, useState } from "react"
-import { getUrlApi } from "hooks/actions/setting"
-import { useAxiosWrapper } from "hooks/useAxiosWrapper"
 import { toast } from "react-toastify"
+import axiosInstance from "utils/axiosInstance"
 
 const INITIAL_PAGE = 1
 
-export function useComingVideoGames() {
+export function useComingGames() {
     const [comingVideoGames, setComingVideoGames] = useState([])
     const [page, setPage] = useState(INITIAL_PAGE)
     const [loadingNextPage, setLoadingNextPage] = useState(false)
     const [loadingGames, setLoadingGames] = useState(false)
     const [isLastPage, setIsLastPage] = useState(false)
-    const axiosWrapper = useAxiosWrapper()
-    const urlApi = `${getUrlApi()}/VideoGames`
 
-    const getComingVideoGames = (pageNumber) => axiosWrapper.get(`${urlApi}/ComingReleaseDates?pageNumber=${pageNumber}`)
+    const getComingVideoGames = (pageNumber) => axiosInstance.get(`/Games/Coming?pageNumber=${pageNumber}`)
 
     useEffect(() => {
         setLoadingGames(true)

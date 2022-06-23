@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Grid, Button } from "@mui/material"
-import TextFieldForm from "components/common/TextFieldForm"
+import TextFieldForm from "components/common/form/TextFieldForm"
 import { useForm } from 'react-hook-form'
 import { useNavigate, useParams } from "react-router-dom"
 import { routes } from "constants/routes"
@@ -21,16 +21,18 @@ export default function SearchForm() {
     }
 
     return (
-        <Grid container spacing={1} sx={{ justifyContent: "center" }}>
-            <Grid item xs={12} sm={6} lg={4}>
-                <TextFieldForm control={control} errors={errors} name="videoGameName" label="Game name" />
+        <form onSubmit={handleSubmit(handleSearch)}>
+            <Grid container spacing={1} sx={{ justifyContent: "center" }}>
+                <Grid item xs={12} sm={6} lg={4}>
+                    <TextFieldForm control={control} errors={errors} name="videoGameName" label="Game name" />
+                </Grid>
+                <Grid item xs={12} sm={4} lg={2} sx={{ textAlign: "left" }}>
+                    <Button variant="contained" sx={{ width: "100%" }}>
+                        Search
+                    </Button>
+                </Grid>
             </Grid>
-            <Grid item xs={12} sm={4} lg={2} sx={{ textAlign: "left" }}>
-                <Button variant="contained" onClick={handleSubmit(handleSearch)} sx={{ width: "100%" }}>
-                    Search
-                </Button>
-            </Grid>
-        </Grid>
+        </form>
     )
 }
 

@@ -1,11 +1,11 @@
 import * as React from "react"
-import { useComingVideoGames } from "hooks/videoGames/useComingVideoGames"
+import { useComingGames } from "hooks/games/useComingGames"
 import { Typography } from "@mui/material"
-import SearchForm from "../SearchForm";
-import GamesList from "../GameList";
+import SearchForm from "../common/SearchForm";
+import GamesList from "../common/GameList";
 
 export default function ReleaseDates() {
-    const { comingVideoGames, setPage, loadingNextPage, loadingGames, isLastPage } = useComingVideoGames()
+    const { comingVideoGames, setPage, loadingNextPage, loadingGames, isLastPage } = useComingGames()
 
     return (
         <>

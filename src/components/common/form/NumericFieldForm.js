@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField'
 import { Controller } from 'react-hook-form'
 
 export default function NumericFieldForm(props) {
-    const { control, name, label } = props
+    const { control, name, label, errors } = props
 
     return (
         <Controller
@@ -18,6 +18,8 @@ export default function NumericFieldForm(props) {
                     label={label}
                     fullWidth
                     variant="outlined"
+                    error={errors[name] ? true : false}
+                    helperText={errors[name]?.message}
                 />
             }
         />

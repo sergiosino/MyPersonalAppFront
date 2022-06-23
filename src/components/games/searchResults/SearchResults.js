@@ -1,8 +1,8 @@
 import * as React from "react"
 import { Grid } from "@mui/material"
-import SearchForm from "../SearchForm"
-import GamesList from "../GameList"
-import { useSearchGames } from "hooks/videoGames/useSearchGames"
+import SearchForm from "../common/SearchForm"
+import GamesList from "../common/GameList"
+import { useSearchGames } from "hooks/games/useSearchGames"
 import { useParams } from "react-router-dom"
 
 export default function SearchResults() {

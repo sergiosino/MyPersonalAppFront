@@ -3,42 +3,32 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import { useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
-import { useTasksConfigActions } from "hooks/actions/useTasksConfigActions"
-import TextFieldForm from 'components/common/TextFieldForm'
-import NumericFieldForm from 'components/common/NumericFieldForm'
-
-const tasksConfigDefault = {
-    bestOfferMinPercentage: 0,
-    emailTo: "",
-    taskAllOffersDelay: 0,
-    taskBestOfferFoundDelay: 0,
-    taskBestOfferNotFoundDelay: 0,
-    taskExceptionDelay: 0
-}
+import TextFieldForm from 'components/common/form/TextFieldForm'
+import NumericFieldForm from 'components/common/form/NumericFieldForm'
+import * as yup from "yup"
+import { useTasksConfig } from 'hooks/bitcoin/useTasksConfig'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 export default function TasksConfig() {
-    const { getTasksConfig, putTasksConfig } = useTasksConfigActions();
-    const { control, handleSubmit, reset } = useForm({ defaultValues: tasksConfigDefault })
+    const { tasksConfig, updateTasksConfig } = useTasksConfig()
+
+    const schema = yup.object().shape({
+        bestOfferMinPercentage: yup.string().required("Required field").default(tasksConfig?.bestOfferMinPercentage ?? 0),
+        emailTo: yup.string().required("Required field").default(tasksConfig?.emailTo ?? ""),
+        taskAllOffersDelay: yup.number().required("Required field").default(tasksConfig?.taskAllOffersDelay ?? 0),
+        taskBestOfferFoundDelay: yup.number().required("Required field").default(tasksConfig?.taskBestOfferFoundDelay ?? 0),
+        taskBestOfferNotFoundDelay: yup.number().required("Required field").default(tasksConfig?.taskBestOfferNotFoundDelay ?? 0),
+        taskExceptionDelay: yup.number().required("Required field").default(tasksConfig?.taskExceptionDelay ?? 0)
+    });
+    const { control, handleSubmit, reset, formState: { errors } } = useForm({ defaultValues: schema.cast(), resolver: yupResolver(schema) })
 
     const saveTasksConfig = (data) => {
-        putTasksConfig(data).then(() => {
-            toast.success("Tasks configuration saved")
-        }).catch(ex => {
-            console.log(ex)
-            toast.error("Error saving tasks config")
-        })
+        updateTasksConfig(data)
     }
 
     React.useEffect(() => {
-        getTasksConfig().then(response => {
-            reset(response.data)
-        }).catch(ex => {
-            console.log(ex)
-            toast.error("Error getting tasks configuration")
-        })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+        if (tasksConfig) reset(tasksConfig)
+    }, [tasksConfig, reset])
 
     return (
         <React.Fragment>
@@ -49,24 +39,24 @@ export default function TasksConfig() {
                     </Typography>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <NumericFieldForm name="bestOfferMinPercentage" control={control} label="Best offer min. percentage"/>
+                    <NumericFieldForm name="bestOfferMinPercentage" control={control} label="Best offer min. percentage" errors={errors} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextFieldForm name="emailTo" control={control} label="Email to" />
+                    <TextFieldForm name="emailTo" control={control} label="Email to" errors={errors} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <NumericFieldForm name="taskAllOffersDelay" control={control} label="Task all offers delay"/>
+                    <NumericFieldForm name="taskAllOffersDelay" control={control} label="Task all offers delay" errors={errors} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <NumericFieldForm name="taskBestOfferFoundDelay" control={control} label="Task best offer found delay"/>
+                    <NumericFieldForm name="taskBestOfferFoundDelay" control={control} label="Task best offer found delay" errors={errors} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <NumericFieldForm name="taskBestOfferNotFoundDelay" control={control} label="Task best offer not found delay"/>
+                    <NumericFieldForm name="taskBestOfferNotFoundDelay" control={control} label="Task best offer not found delay" errors={errors} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <NumericFieldForm name="taskExceptionDelay" control={control} label="Task exception delay"/>
+                    <NumericFieldForm name="taskExceptionDelay" control={control} label="Task exception delay" errors={errors} />
                 </Grid>
-                <Grid item xs={12} sm={6} sx={{ textAlign: "center" }}>
+                <Grid item xs={12} sx={{ textAlign: "center" }}>
                     <Button
                         variant="contained"
                         onClick={handleSubmit(saveTasksConfig)}

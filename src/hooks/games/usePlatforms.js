@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react"
-import { getUrlApi } from "hooks/actions/setting"
-import { useAxiosWrapper } from "hooks/useAxiosWrapper"
+import axiosInstance from "utils/useAxiosWrapper"
 import { toast } from "react-toastify"
 
 export function usePlatforms() {
     const [platforms, setPlatforms] = useState(undefined)
-    const axiosWrapper = useAxiosWrapper()
-    const urlApi = `${getUrlApi()}/VideoGames`
 
-    const getPlatforms = () => axiosWrapper.get(`${urlApi}/Platforms`)
+    const getPlatforms = () => axiosInstance.get(`/Games/Platforms`)
 
     useEffect(() => {
         getPlatforms().then(response => {

@@ -2,23 +2,10 @@ import * as React from 'react'
 import OfferCard from './OfferCard'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
-import { toast } from 'react-toastify'
-import { useOffersActions } from "hooks/actions/useOffersActions"
+import { useAllOffers } from "hooks/bitcoin/useAllOffers"
 
 function Offers() {
-
-    const [offers, setOffers] = React.useState([])
-    const { getAllOffers } = useOffersActions()
-
-    React.useEffect(() => {
-        getAllOffers().then(response => {
-            setOffers(response.data)
-        }).catch(ex => {
-            console.log(ex)
-            toast.error("Error getting the actual offers")
-        })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    const { allOffers } = useAllOffers()
 
     return (
         <>
@@ -26,7 +13,7 @@ function Offers() {
                 All offers with online payment
             </Typography>
             <Grid container spacing={3}>
-                {offers.map((offer) =>
+                {allOffers?.map((offer) =>
                     <OfferCard key={offer.id} offer={offer} />
                 )}
             </Grid>

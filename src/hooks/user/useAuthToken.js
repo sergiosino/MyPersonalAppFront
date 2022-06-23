@@ -3,15 +3,13 @@ import { useNavigate } from "react-router-dom"
 import { routes } from 'constants/routes'
 import jwt from 'jwt-decode'
 import { toast } from 'react-toastify'
-import { STORAGE_TOKEN } from 'constants/constants'
 import AuthContext from 'contexts/AuthContext'
-import axios from "axios"
-import { getUrlApi } from "hooks/actions/setting"
+import axiosInstance from "utils/axiosInstance"
 
 export function useAuthToken() {
-    const { setUserInfo } = useContext(AuthContext)
+    const { setUserInfo, deleteUserInfo } = useContext(AuthContext)
     const navigate = useNavigate()
-    const urlApi = `${getUrlApi()}/Users`
+    const apiController = "/Users"
 
     const validateAndSaveUserInfo = (data) => {
         const userInfo = {
@@ -23,7 +21,7 @@ export function useAuthToken() {
     }
 
     const signUp = (email, password) => {
-        axios.post(`${urlApi}/SignUp?email=${email}&password=${password}`)
+        axiosInstance.post(`${apiController}/SignUp?email=${email}&password=${password}`)
             .then((response) => {
                 try {
                     validateAndSaveUserInfo(response.data)
@@ -34,13 +32,12 @@ export function useAuthToken() {
             }).catch((error) => {
                 toast.error("Error trying to log in")
                 console.log(error)
-                localStorage.removeItem(STORAGE_TOKEN)
-                setUserInfo(null)
+                logout()
             })
     }
 
     const signIn = (email, password) => {
-        axios.post(`${urlApi}/SignIn?email=${email}&password=${password}`)
+        axiosInstance.post(`${apiController}/SignIn?email=${email}&password=${password}`)
             .then((response) => {
                 try {
                     validateAndSaveUserInfo(response.data)
@@ -51,14 +48,12 @@ export function useAuthToken() {
             }).catch((error) => {
                 toast.error("Error trying to log in")
                 console.log(error)
-                localStorage.removeItem(STORAGE_TOKEN)
-                setUserInfo(null)
+                logout()
             })
     }
 
     const logout = () => {
-        localStorage.removeItem(STORAGE_TOKEN)
-        setUserInfo(null)
+        deleteUserInfo()
         navigate(routes.f1Schedule)
     }
 
