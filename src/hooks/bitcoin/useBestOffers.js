@@ -5,11 +5,10 @@ import { toast } from "react-toastify"
 export default function useBestOffers() {
     const [bestOffers, setBestOffers] = useState([])
     const [loading, setLoading] = useState(false)
-    const apiController = "/Offers"
 
     useEffect(() => {
         setLoading(true)
-        axiosInstance.get(`${apiController}/GetBest`).then(response => {
+        axiosInstance.get(`/Offers/GetBest`).then(response => {
             setBestOffers(response.data)
             setLoading(false)
         }).catch(ex => {

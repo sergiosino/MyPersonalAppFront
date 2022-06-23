@@ -6,11 +6,10 @@ import AuthContext from 'contexts/AuthContext'
 export function useAllOffers() {
     const [allOffers, setAllOffers] = useState([])
     const { userInfo } = useContext(AuthContext)
-    const apiController = "/Offers"
 
     useEffect(() => {
         axiosInstance.get(
-            `${apiController}/GetAll`,
+            `/Offers/GetAll`,
             { headers: { Authorization: `bearer ${userInfo.token}` } }
         ).then(response => {
             debugger

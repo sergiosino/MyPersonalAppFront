@@ -13,7 +13,7 @@ export function useSearchGames(props) {
     const [loadingNextPage, setLoadingNextPage] = useState(false)
     const [isLastPage, setIsLastPage] = useState(false)
 
-    const searchGamesAction = (keyword, pageNumber) => axiosInstance.get(`/Search?keyword=${keyword}&pageNumber=${pageNumber}`)
+    const searchGamesAction = (keyword, pageNumber) => axiosInstance.get(`/Games/Search?keyword=${keyword}&pageNumber=${pageNumber}`)
 
     useEffect(() => {
         if (keyword === "") return
