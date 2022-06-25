@@ -19,7 +19,7 @@ function App() {
         <BrowserRouter>
           <AxiosInterceptor>
             <CssBaseline />
-            <ToastContainer position="bottom-center" />
+            <ToastContainer position="bottom-right" />
             <ApplicationBar>
               <Container fixed sx={{ mt: 8 }}>
                 <AllRoutes />

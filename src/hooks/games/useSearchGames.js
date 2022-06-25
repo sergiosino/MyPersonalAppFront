@@ -25,7 +25,6 @@ export function useSearchGames(props) {
             setIsLastPage(false)
         }).catch((ex) => {
             console.log(ex)
-            setSearchGames([])
             toast.error("Error getting the result of the search")
             setLoadingSearch(false)
             setIsLastPage(false)
@@ -44,7 +43,6 @@ export function useSearchGames(props) {
             setLoadingNextPage(false)
         }).catch((ex) => {
             console.log(ex)
-            setSearchGames([])
             toast.error("Error getting the result of the search")
             setLoadingNextPage(false)
         })

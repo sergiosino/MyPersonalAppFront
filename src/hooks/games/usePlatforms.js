@@ -12,7 +12,6 @@ export function usePlatforms() {
             setPlatforms(response.data)
         }).catch((ex) => {
             console.log(ex)
-            setPlatforms([])
             toast.error("Error getting the coming video games")
         })
     }, [setPlatforms])

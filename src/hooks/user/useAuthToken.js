@@ -29,9 +29,9 @@ export function useAuthToken() {
                 } catch (error) {
                     logout()
                 }
-            }).catch((error) => {
+            }).catch((ex) => {
                 toast.error("Error trying to log in")
-                console.log(error)
+                console.log(ex)
                 logout()
             })
     }
@@ -42,12 +42,12 @@ export function useAuthToken() {
                 try {
                     validateAndSaveUserInfo(response.data)
                     navigate(routes.f1Schedule)
-                } catch (error) {
+                } catch (ex) {
                     logout()
                 }
-            }).catch((error) => {
+            }).catch((ex) => {
                 toast.error("Error trying to log in")
-                console.log(error)
+                console.log(ex)
                 logout()
             })
     }

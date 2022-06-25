@@ -20,7 +20,6 @@ export function useComingGames() {
             setLoadingGames(false)
         }).catch((ex) => {
             console.log(ex)
-            setComingVideoGames([])
             toast.error("Error getting the coming video games")
             setLoadingGames(false)
         })
@@ -38,7 +37,6 @@ export function useComingGames() {
             setLoadingNextPage(false)
         }).catch((ex) => {
             console.log(ex)
-            setComingVideoGames([])
             toast.error("Error getting the next page of coming video games")
             setLoadingNextPage(false)
         })

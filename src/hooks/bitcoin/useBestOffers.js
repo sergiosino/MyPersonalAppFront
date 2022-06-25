@@ -14,7 +14,6 @@ export default function useBestOffers() {
         }).catch(ex => {
             console.log(ex)
             toast.error("Error getting the actual offers")
-            setBestOffers([])
             setLoading(false)
         })
     }, [setLoading, setBestOffers])

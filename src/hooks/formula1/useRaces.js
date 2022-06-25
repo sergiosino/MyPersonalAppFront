@@ -15,7 +15,7 @@ export function useRaces(props) {
             setLoading(false)
         }).catch(ex => {
             console.log(ex)
-            toast.error("Error getting the actual offers")
+            toast.error("Error getting the races info")
             setLoading(false)
         })
     }, [setRaces, setLoading, year])

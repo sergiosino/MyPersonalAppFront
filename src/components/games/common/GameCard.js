@@ -9,7 +9,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite"
 import Skeleton from "@mui/material/Skeleton"
 
 export default function GameCard(props) {
-    const { id, name, coverUrl, releaseDate, platformNames, favourite = false } = props
+    const { id, name, coverUrl, releaseDate, platformNames, favourite, handleAddFav, handleDelteFav } = props
 
     const [fav, setFav] = React.useState(favourite)
 
@@ -18,6 +18,10 @@ export default function GameCard(props) {
     }
 
     const handleFavClick = () => {
+        if (!fav)
+            handleAddFav(id)
+        else
+            handleDelteFav(id)
         setFav(!fav)
     }
 
@@ -37,7 +41,7 @@ export default function GameCard(props) {
                     Platform: {platformNames ?? "Unknown"}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    First release: {releaseDate  ?? "Unknown"}
+                    First release: {releaseDate ?? "Unknown"}
                 </Typography>
             </CardContent>
             <IconButton sx={{ position: "absolute", bottom: 0, right: 0 }} aria-label="Fav" onClick={handleFavClick}>

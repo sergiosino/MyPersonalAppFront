@@ -58,7 +58,6 @@ export default function RaceInfoCard(props) {
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                        {console.log(race.raceResults)}
                         {race.raceResults ? (
                             <ResultsTable rows={race.raceResults} columns={raceTableCols} isRaceResults />
                         ) : (
