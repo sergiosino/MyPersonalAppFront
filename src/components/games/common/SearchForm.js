@@ -27,7 +27,7 @@ export default function SearchForm() {
                     <TextFieldForm control={control} errors={errors} name="videoGameName" label="Game name" />
                 </Grid>
                 <Grid item xs={12} sm={4} lg={2} sx={{ textAlign: "left" }}>
-                    <Button variant="contained" sx={{ width: "100%" }}>
+                    <Button type="submit" variant="contained" sx={{ width: "100%" }}>
                         Search
                     </Button>
                 </Grid>

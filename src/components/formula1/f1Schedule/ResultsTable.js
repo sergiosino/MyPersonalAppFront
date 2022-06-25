@@ -34,7 +34,7 @@ export default function ResultsTable(props) {
             <>
                 <TableCell>{row.laps}</TableCell>
                 <TableCell>{row.status}</TableCell>
-                <TableCell>{row.FastestLap?.Time?.time}</TableCell>
+                <TableCell>{row.fastestLap}</TableCell>
                 <TableCell>{row.points}</TableCell>
             </>
         )
@@ -43,9 +43,9 @@ export default function ResultsTable(props) {
     const qualyTableCells = (row) => {
         return (
             <>
-                <TableCell>{row.Q1}</TableCell>
-                <TableCell>{row.Q2}</TableCell>
-                <TableCell>{row.Q3}</TableCell>
+                <TableCell>{row.q1}</TableCell>
+                <TableCell>{row.q2}</TableCell>
+                <TableCell>{row.q3}</TableCell>
             </>
         )
     }
@@ -64,8 +64,8 @@ export default function ResultsTable(props) {
                             {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) =>
                                 <TableRow hover key={row.position} tabIndex={-1}>
                                     <TableCell>{row.position}</TableCell>
-                                    <TableCell>{`${row.Driver?.givenName} ${row.Driver?.familyName}`}</TableCell>
-                                    <TableCell>{row.Constructor?.name}</TableCell>
+                                    <TableCell>{`${row.driverName} ${row.driverSurname}`}</TableCell>
+                                    <TableCell>{row.constructorName}</TableCell>
                                     {isRaceResults ? raceTableCells(row) : qualyTableCells(row)}
                                 </TableRow>
                             )}

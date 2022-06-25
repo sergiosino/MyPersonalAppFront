@@ -12,7 +12,6 @@ export function useAllOffers() {
             `/Offers/GetAll`,
             { headers: { Authorization: `bearer ${userInfo.token}` } }
         ).then(response => {
-            debugger
             setAllOffers(response.data)
         }).catch(ex => {
             console.log(ex)

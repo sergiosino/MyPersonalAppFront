@@ -10,14 +10,14 @@ import Skeleton from "@mui/material/Skeleton"
 export default function PreRaceInfo(props) {
     const { race } = props
 
-    const preRaceInfoCard = (title, date, time) => {
+    const preRaceInfoCard = (title, date) => {
         return (
             <Card>
                 <CardContent sx={{ paddingBottom: 16 }}>
                     <Typography align="center" variant="subtitle1">{title}</Typography>
                     <Divider variant="middle" />
                     <Typography align="center" variant="subtitle1" component="div">
-                        {formatDatePretty(new Date(`${date}T${time}`))}
+                        {formatDatePretty(new Date(date))}
                     </Typography>
                 </CardContent>
             </Card>
@@ -25,23 +25,23 @@ export default function PreRaceInfo(props) {
     }
 
     const firstPractice = () => {
-        return preRaceInfoCard("First practice", race.FirstPractice?.date, race.FirstPractice?.time)
+        return preRaceInfoCard("First practice", race.firstPracticeDate)
     }
 
     const secondPractice = () => {
-        return preRaceInfoCard("Second practice", race.SecondPractice?.date, race.SecondPractice?.time)
+        return preRaceInfoCard("Second practice", race.secondPracticeDate)
     }
 
     const thirdPractice = () => {
-        return preRaceInfoCard("Third practice", race.ThirdPractice?.date, race.ThirdPractice?.time)
+        return preRaceInfoCard("Third practice", race.thirdPracticeDate)
     }
 
     const qualifying = () => {
-        return preRaceInfoCard("Qualifying", race.Qualifying?.date, race.Qualifying?.time)
+        return preRaceInfoCard("Qualifying", race.qualifyingDate)
     }
 
     const sprint = () => {
-        return preRaceInfoCard("Sprint", race.Sprint?.date, race.Sprint?.time)
+        return preRaceInfoCard("Sprint", race.sprintDate)
     }
 
     const raceWithSprint = () => {
@@ -81,7 +81,7 @@ export default function PreRaceInfo(props) {
             <Grid item xs={12} sm={6} md={3}>
                 {firstPractice()}
             </Grid>
-            {race.Sprint ? raceWithSprint() : raceWithoutSprint()}
+            {race.sprintDate ? raceWithSprint() : raceWithoutSprint()}
         </Grid>
     )
 }

@@ -12,9 +12,9 @@ export default function HeaderRaceInfo(props) {
     const { race } = props
 
     const getRaceIcon = () => {
-        if (race.raceStatus === raceStatusEnum.past)
+        if (race.status === raceStatusEnum.past)
             return <CheckCircleIcon sx={{ color: "darkgreen" }} fontSize="small" />
-        else if (race.raceStatus === raceStatusEnum.next)
+        else if (race.status === raceStatusEnum.next)
             return <SportsScoreIcon />
     }
 
@@ -24,7 +24,7 @@ export default function HeaderRaceInfo(props) {
                 <Grid item container xs={12} spacing={1} alignItems="center">
                     <Grid item>
                         <LinkNewTab href={race.url} variant="h5">
-                            {race.raceName}
+                            {race.name}
                         </LinkNewTab>
                     </Grid>
                     <Grid item display={"flex"}>
@@ -32,18 +32,18 @@ export default function HeaderRaceInfo(props) {
                     </Grid>
                 </Grid>
                 <Typography variant="subtitle1" component="div">
-                    Race date: {formatDatePretty(new Date(`${race.date}T${race.time}`))}
+                    Race date: {formatDatePretty(new Date(race.raceDate))}
                 </Typography>
             </Grid>
             <Grid item xs={12} sm={6} lg={4}>
                 <Typography variant="body2">
-                    Country: {race.Circuit?.Location?.country}
+                    Country: {race.circuit?.country}
                 </Typography>
                 <Typography variant="body2">
-                    Locality: {race.Circuit?.Location?.locality}
+                    Locality: {race.circuit?.locality}
                 </Typography>
                 <Typography variant="body2">
-                    Circuit name: <LinkNewTab href={race.Circuit?.url}>{race.Circuit.circuitName}</LinkNewTab>
+                    Circuit name: <LinkNewTab href={race.circuit?.url}>{race.circuit?.name}</LinkNewTab>
                 </Typography>
             </Grid>
         </Grid>

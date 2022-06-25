@@ -67,7 +67,7 @@ export default function Navigator(props) {
                     </ListItem>
                     <Divider sx={{ mt: 2 }} />
                 </Box>
-                {/* SIGNED USERS */}
+                {/* SIGNED IN USERS */}
                 {userInfo && (
                     <>
                         {/* HODLHODL - BITCOIN */}

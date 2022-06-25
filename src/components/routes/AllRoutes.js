@@ -8,8 +8,8 @@ import TasksConfig from 'components/bitcoin/tasksConfig/TasksConfig'
 import Offers from 'components/bitcoin/offers/Offers'
 import F1Schedule from 'components/formula1/f1Schedule/F1Schedule'
 import ReleaseDates from 'components/games/releaseDates/ReleaseDates'
-import Page404 from 'components/websitePages/Page404'
-import PageWorkInProgress from 'components/websitePages/PageWorkInProgress'
+import Page404 from 'components/common/websitePages/Page404'
+import PageWorkInProgress from 'components/common/websitePages/PageWorkInProgress'
 import SearchResults from 'components/games/searchResults/SearchResults'
 
 function RequireAuth(props) {

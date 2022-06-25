@@ -1,5 +1,4 @@
 import * as React from 'react'
-import axios from 'axios'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
@@ -15,40 +14,12 @@ import { qualyTableCols, raceTableCols } from "../tablesCols"
 import Skeleton from "@mui/material/Skeleton"
 
 export default function RaceInfoCard(props) {
-    const { race, year } = props
+    const { race } = props
 
     const [expanded, setExpanded] = React.useState(false)
-    const [qualyResults, setQualyResults] = React.useState(null)
-    const [raceResults, setRaceResults] = React.useState(null)
 
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false)
-        if (!isExpanded) {
-            setQualyResults(null)
-            setRaceResults(null)
-        } else if (panel === "qualy") {
-            getQualifyingResult()
-            setRaceResults(null)
-        } else {
-            getRaceResult()
-            setQualyResults(null)
-        }
-    }
-
-    const getQualifyingResult = () => {
-        axios.get(`https://ergast.com/api/f1/${year}/${race.round}/qualifying.json`).then(response => {
-            setQualyResults(response.data?.MRData?.RaceTable?.Races[0].QualifyingResults)
-        }).catch(ex => {
-            console.log(ex)
-        })
-    }
-
-    const getRaceResult = () => {
-        axios.get(`https://ergast.com/api/f1/${year}/${race.round}/results.json`).then(response => {
-            setRaceResults(response.data?.MRData?.RaceTable?.Races[0].Results)
-        }).catch(ex => {
-            console.log(ex)
-        })
     }
 
     return (
@@ -73,7 +44,11 @@ export default function RaceInfoCard(props) {
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                        {qualyResults ? <ResultsTable rows={qualyResults} columns={qualyTableCols} /> : "No results yet"}
+                        {race.qualyResults ? (
+                            <ResultsTable rows={race.qualyResults} columns={qualyTableCols} />
+                        ) : (
+                            "No results yet"
+                        )}
                     </AccordionDetails>
                 </Accordion>
                 <Accordion expanded={expanded === 'race'} onChange={handleChange('race')} TransitionProps={{ unmountOnExit: true }}>
@@ -83,7 +58,12 @@ export default function RaceInfoCard(props) {
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                        {raceResults ? <ResultsTable rows={raceResults} columns={raceTableCols} isRaceResults /> : "No results yet"}
+                        {console.log(race.raceResults)}
+                        {race.raceResults ? (
+                            <ResultsTable rows={race.raceResults} columns={raceTableCols} isRaceResults />
+                        ) : (
+                            "No results yet"
+                        )}
                     </AccordionDetails>
                 </Accordion>
             </CardContent>

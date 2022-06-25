@@ -48,7 +48,7 @@ export function useSearchGames(props) {
             toast.error("Error getting the result of the search")
             setLoadingNextPage(false)
         })
-    }, [page, setLoadingNextPage, setSearchGames])
+    }, [page, keyword, setLoadingNextPage, setSearchGames])
 
     return {
         loadingSearch,
