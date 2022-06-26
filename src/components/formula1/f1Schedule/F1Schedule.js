@@ -40,17 +40,19 @@ export default function F1Schedule() {
                         )
                     )}
                 </Grid>
-                <Zoom
-                    in={true}
-                    sx={{ position: 'fixed', bottom: "5%", right: "5%" }}
-                    style={{ transitionDelay: "750ms" }}
-                    unmountOnExit
-                >
-                    <Fab variant="extended" aria-label="Next race" color="primary" onClick={handleNextRaceClick}>
-                        <SportsMotorsportsIcon sx={{ mr: 1 }} />
-                        Next Race
-                    </Fab>
-                </Zoom>
+                {!loading &&
+                    <Zoom
+                        in={true}
+                        sx={{ position: 'fixed', bottom: "5%", right: "5%" }}
+                        style={{ transitionDelay: "750ms" }}
+                        unmountOnExit
+                    >
+                        <Fab variant="extended" aria-label="Next race" color="primary" onClick={handleNextRaceClick}>
+                            <SportsMotorsportsIcon sx={{ mr: 1 }} />
+                            Next Race
+                        </Fab>
+                    </Zoom>
+                }
             </Box>
         </>
     )
