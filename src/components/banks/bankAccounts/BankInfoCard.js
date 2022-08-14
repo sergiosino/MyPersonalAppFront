@@ -71,7 +71,7 @@ export default function BankInfoCard(props) {
                     <CardContent>
                         {bankAccounts.map((bankAccount) =>
                             <div key={bankAccount.id}>
-                                <Divider>
+                                <Divider style={{marginTop: 5}}>
                                     <Typography variant="h7">
                                         <b>{bankAccount.name ?? bankAccount.iban}</b>
                                     </Typography>
@@ -83,13 +83,12 @@ export default function BankInfoCard(props) {
                                     <Typography variant="subtitle1" noWrap>
                                         {bankAccount.balanceAmount} {bankAccount.balanceCurrency}
                                     </Typography>
-                                    <IconButton onClick={() => handleOpenEditAccount(bankAccount.id)}>
+                                    <IconButton style={{border: "1px solid", padding: "5px", borderColor: "lightgray"}} onClick={() => handleOpenEditAccount(bankAccount.id)}>
                                         <EditIcon />
                                     </IconButton>
                                 </Stack>
                             </div>
                         )}
-                        <Divider />
                         <Box sx={{ textAlign: "right", mt: 2, mb: -2 }}>
                             <Typography variant="caption">
                                 Do yo want to delete the linked bank and all the accounts and info? <Link component="button" variant="caption" onClick={() => alert(":(")}>Click here</Link>

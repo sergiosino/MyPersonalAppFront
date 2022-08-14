@@ -52,39 +52,40 @@ export default function AddNewBankDialog(props) {
             open={open}
             onClose={handleClose}
             fullWidth={true}
-            maxWidth="md">
-            <DialogTitle>Add new bank</DialogTitle>
+            maxWidth="md"
+        >
+            <DialogTitle>
+                Add new bank
+            </DialogTitle>
             <Divider />
             <DialogContent>
                 <TextField
-                    sx={{ h: 10 }}
+                    sx={{ mt: 1, pb: 3 }}
                     size="small"
                     onChange={handleFilterChange}
                     label={"Filter"}
                     fullWidth
                     variant="outlined"
                 />
-                <Box style={{maxHeight: 600, overflowY: "scroll", padding: 24}} sx={{ mt: 3 }}>
-                    {newBankStep === newBankSteps.countrySelect &&
-                        <Grid container spacing={3}>
-                            {countryListInUse.map((country) =>
-                                <Grid item xs={12} md={6}>
-                                    <ElementCard id={country.isoCode} name={country.name} handleElementSelect={handleCountrySelect} imageUrl={`https://flagcdn.com/h240/${country.isoCode.toLowerCase()}.png`} />
-                                </Grid>
-                            )}
-                        </Grid>
-                    }
-
-                    {newBankStep === newBankSteps.bankSelect &&
-                        <Grid container spacing={2}>
-                            {bankListInUse.map((bank) =>
-                                <Grid item xs={12} md={6}>
-                                    <ElementCard id={bank.id} name={bank.name} handleElementSelect={handleBankSelect} imageUrl={bank.logo} />
-                                </Grid>
-                            )}
-                        </Grid>
-                    }
-                </Box>
+                {newBankStep === newBankSteps.countrySelect &&
+                    <Grid container spacing={3}>
+                        {countryListInUse.map((country) =>
+                            <Grid item xs={12} md={6} key={country.isoCode}>
+                                <ElementCard id={country.isoCode} name={country.name} handleElementSelect={handleCountrySelect} imageUrl={`https://flagcdn.com/h240/${country.isoCode.toLowerCase()}.png`} />
+                            </Grid>
+                        )}
+                    </Grid>
+                }
+                {newBankStep === newBankSteps.bankSelect &&
+                    <Grid container spacing={2}>
+                        {bankListInUse.map((bank) =>
+                            <Grid item xs={12} md={6} key={bank.id}>
+                                <ElementCard id={bank.id} name={bank.name} handleElementSelect={handleBankSelect} imageUrl={bank.logo} />
+                            </Grid>
+                        )}
+                    </Grid>
+                }
+                {/* </Box> */}
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleClose}>
