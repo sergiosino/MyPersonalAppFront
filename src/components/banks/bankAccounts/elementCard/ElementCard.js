@@ -1,8 +1,9 @@
 import * as React from "react"
 import "./ElementCard.css"
-import { CardMedia, CardContent, Card, Typography } from "@mui/material"
+import { CardMedia, CardContent, Card, Typography, Divider } from "@mui/material"
 import { Box } from "@mui/system"
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
+import Skeleton from "@mui/material/Skeleton"
 
 export default function ElementCard(props) {
     const { id, name, handleElementSelect, imageUrl } = props
@@ -16,9 +17,10 @@ export default function ElementCard(props) {
             <Box sx={{ display: "flex", flexDirection: "row" }}>
                 <CardMedia
                     component="img"
-                    sx={{ maxWidth: "25%", height: 64 }}
+                    sx={{ maxWidth: { xs: "25%", sm: "20%" }, height: 64 }}
                     src={imageUrl}
                 />
+                <Divider orientation="vertical" flexItem />
                 <CardContent sx={{ flex: 0.9, alignSelf: "center" }} >
                     <Typography variant="h7" className="element-card-name">
                         <b>{name}</b>
@@ -28,6 +30,17 @@ export default function ElementCard(props) {
                     <NavigateNextIcon />
                 </Box>
             </Box>
+        </Card>
+    )
+}
+
+export function ElementCardSkeleton(props) {
+    return (
+        <Card sx={{ display: "flex" }}>
+            <Skeleton variant="rectangular" width="25%" height={64} />
+            <CardContent sx={{ alignSelf: "center", flex: 1 }}>
+                <Skeleton variant="text" height={24} width="60%" />
+            </CardContent>
         </Card>
     )
 }

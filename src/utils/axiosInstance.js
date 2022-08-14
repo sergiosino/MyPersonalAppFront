@@ -24,7 +24,6 @@ export function AxiosInterceptor(props) {
     }
 
     const errorInterceptor = (error) => {
-        debugger
         if (error.response.status === 401 || error.code === "ERR_NETWORK")
             logout()
         else

@@ -18,10 +18,13 @@ function RequireAuth(props) {
     const navigate = useNavigate()
     const { userInfo } = React.useContext(AuthContext)
 
+    React.useEffect(() => {
+        if (!userInfo)
+            navigate(routes.login)
+    }, [userInfo, children, navigate])
+
     if (userInfo)
         return children
-    else
-        navigate(routes.login)
 }
 
 export default function AllRoutes() {
@@ -35,7 +38,7 @@ export default function AllRoutes() {
             <Route path={routes.searchResults} element={<SearchResults />} />
             <Route path={routes.offers} element={<RequireAuth><Offers /></RequireAuth>} />
             <Route path={routes.tasksConfig} element={<RequireAuth><TasksConfig /></RequireAuth>} />
-            <Route path={routes.myBankAccounts} element={<BankAccounts />} />
+            <Route path={routes.myBankAccounts} element={<RequireAuth><BankAccounts /></RequireAuth>} />
             <Route path="*" element={<Page404 />} />
         </Routes>
     )
