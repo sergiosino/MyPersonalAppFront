@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import GameCard, { ReleaseDateCardSkeleton } from "./GameCard"
+import GameCard, { CardSkeleton } from "./GameCard"
 import { Grid, Box } from "@mui/material"
 import LoadingButton from '@mui/lab/LoadingButton'
 import { useFavGames } from "hooks/games/useFavGames"
@@ -61,7 +61,7 @@ export default function GamesList(props) {
                         </Grid>
                     ) : (
                         <Grid key={index} item xs={12} sm={6} lg={4}>
-                            <ReleaseDateCardSkeleton />
+                            <CardSkeleton />
                         </Grid>
                     )
                 )}

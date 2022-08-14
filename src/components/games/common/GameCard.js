@@ -51,7 +51,7 @@ export default function GameCard(props) {
     )
 }
 
-export function ReleaseDateCardSkeleton() {
+export function CardSkeleton() {
     return (
         <Card sx={{ display: "flex" }}>
             <Skeleton variant="rectangular" width="20%" height={102} />

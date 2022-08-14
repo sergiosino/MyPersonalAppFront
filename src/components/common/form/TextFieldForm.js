@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField'
 import { Controller } from 'react-hook-form'
 
 export default function TextFieldForm(props) {
-    const { control, name, label, errors } = props
+    const { control, name, label, errors, ...other } = props
 
     return (
         <Controller
@@ -20,6 +20,7 @@ export default function TextFieldForm(props) {
                     variant="outlined"
                     error={errors[name] ? true : false}
                     helperText={errors[name]?.message}
+                    {...other}
                 />
             }
         />

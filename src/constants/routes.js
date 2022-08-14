@@ -7,6 +7,6 @@ export const routes = {
     tasksConfig: "/tasksconfig",
     offers: "/offers",
     releasesDates: "/releasesdates",
-    banks: "/banks",
+    myBankAccounts: "/mybankaccounts",
     searchResults: "/searchresults/:keyword"
 }

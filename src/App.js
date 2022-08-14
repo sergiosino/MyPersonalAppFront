@@ -21,7 +21,7 @@ function App() {
             <CssBaseline />
             <ToastContainer position="bottom-right" />
             <ApplicationBar>
-              <Container fixed sx={{ mt: 8 }}>
+              <Container fixed maxWidth={false} sx={{ mt: 8 }}>
                 <AllRoutes />
                 <ApplicationFooter />
               </Container>

@@ -9,7 +9,8 @@ import Offers from 'components/bitcoin/offers/Offers'
 import F1Schedule from 'components/formula1/f1Schedule/F1Schedule'
 import ReleaseDates from 'components/games/releaseDates/ReleaseDates'
 import Page404 from 'components/common/websitePages/Page404'
-import PageWorkInProgress from 'components/common/websitePages/PageWorkInProgress'
+// import PageWorkInProgress from 'components/common/websitePages/PageWorkInProgress'
+import BankAccounts from 'components/banks/bankAccounts/BankAccounts'
 import SearchResults from 'components/games/searchResults/SearchResults'
 
 function RequireAuth(props) {
@@ -34,7 +35,7 @@ export default function AllRoutes() {
             <Route path={routes.searchResults} element={<SearchResults />} />
             <Route path={routes.offers} element={<RequireAuth><Offers /></RequireAuth>} />
             <Route path={routes.tasksConfig} element={<RequireAuth><TasksConfig /></RequireAuth>} />
-            <Route path={routes.banks} element={<RequireAuth><PageWorkInProgress /></RequireAuth>} />
+            <Route path={routes.myBankAccounts} element={<BankAccounts />} />
             <Route path="*" element={<Page404 />} />
         </Routes>
     )
