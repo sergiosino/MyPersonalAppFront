@@ -8,7 +8,7 @@ import { useLinkedBanks } from "hooks/banks/useLinkedBanks"
 const LOADING_NUMBER_LINKED_BANKS = 5
 
 export default function BankAccounts() {
-    const { linkedBanks, loading, deleteLinkedBank } = useLinkedBanks()
+    const { linkedBanks, loading, deleteLinkedBank, editAccount } = useLinkedBanks()
 
     return (
         <>
@@ -31,6 +31,7 @@ export default function BankAccounts() {
                                     key={linkedBank.id}
                                     bankInfo={linkedBank}
                                     handleDelteBank={deleteLinkedBank}
+                                    editAccount={editAccount}
                                 />
                             ) : (
                                 <BankInfoCardSkeleton key={index} />

@@ -8,7 +8,7 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import { Divider, Grid, Stepper, Step, Stack, StepLabel } from '@mui/material'
 import ElementCard, { ElementCardSkeleton } from "components/banks/bankAccounts/elementCard/ElementCard"
-import { countryList } from "../defaultLists"
+import { countryList } from "components/banks/constants/countryList"
 import { TextField, Typography } from "@mui/material"
 import { useCountryBanks } from "hooks/banks/useCountryBanks"
 import { useAddLinkedBank } from "hooks/banks/useAddLinkedBank"
@@ -107,7 +107,6 @@ export default function AddNewBankDialog() {
             <Dialog
                 fullScreen={fullScreen}
                 open={openNewBankDialog}
-                onClose={handleCloseNewBankDialog}
                 fullWidth={true}
                 maxWidth="md"
             >

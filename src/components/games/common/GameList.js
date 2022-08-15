@@ -17,8 +17,6 @@ export default function GamesList(props) {
     const navigate = useNavigate()
     const { userInfo } = useContext(AuthContext)
 
-    console.log(favs)
-
     const handleNextPage = () => {
         setPage((prevPage) => prevPage + 1)
     }

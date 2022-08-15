@@ -73,7 +73,7 @@ export default function Navigator(props) {
                         {/* HODLHODL - BITCOIN */}
                         <Box>
                             <ListItem sx={{ py: 2, px: 3 }}>
-                                <ListItemText>HodlHodl</ListItemText>
+                                <ListItemText>Offers and task</ListItemText>
                             </ListItem>
                             <ListItem disablePadding>
                                 <ListItemButton sx={{ px: 3 }} onClick={handleSelectItem(routes.offers)}>
@@ -89,7 +89,7 @@ export default function Navigator(props) {
                                         <ListItemIcon>
                                             <SettingsIcon />
                                         </ListItemIcon>
-                                        <ListItemText primary="Trasks config" />
+                                        <ListItemText primary="Trask config" />
                                     </ListItemButton>
                                 </ListItem>
                             )}
