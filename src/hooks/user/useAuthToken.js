@@ -14,7 +14,8 @@ export function useAuthToken() {
     const validateAndSaveUserInfo = (data) => {
         const userInfo = {
             token: data.idToken,
-            email: data.email
+            email: data.userId,
+            userId: data.userId
         }
         jwt(userInfo.token)
         setUserInfo(userInfo)

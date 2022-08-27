@@ -5,7 +5,7 @@ import axios from "axios"
 const getUrlApi = () => {
     const url = window.location.href
     if (url.includes("vercel")) {
-        return "https://mypersonalappapi.herokuapp.com/api"
+        return "https://mypersonalapp-api.fly.dev/api"
     } else {
         return "https://localhost:44316/api"
     }

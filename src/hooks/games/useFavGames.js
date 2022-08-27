@@ -11,7 +11,7 @@ export function useFavGames() {
     useEffect(() => {
         if (userInfo) {
             axiosInstance.get(
-                `${apiController}/Favs?user=${userInfo.email}`,
+                `${apiController}/Favs?user=${userInfo.userId}`,
                 { headers: { Authorization: `bearer ${userInfo.token}` } }
             ).then(response => {
                 setFavs(response.data)
@@ -25,7 +25,7 @@ export function useFavGames() {
     const addFav = (gameId) => {
         if (userInfo) {
             axiosInstance.post(
-                `${apiController}/AddFav?user=${userInfo.email}&gameId=${gameId}`,
+                `${apiController}/AddFav?user=${userInfo.userId}&gameId=${gameId}`,
                 {},
                 { headers: { Authorization: `bearer ${userInfo.token}` } }
             ).catch(ex => {
@@ -38,7 +38,7 @@ export function useFavGames() {
     const deleteFav = (gameId) => {
         if (userInfo) {
             axiosInstance.delete(
-                `${apiController}/DeleteFav?user=${userInfo.email}&gameId=${gameId}`,
+                `${apiController}/DeleteFav?user=${userInfo.userId}&gameId=${gameId}`,
                 { headers: { Authorization: `bearer ${userInfo.token}` } }
             ).catch(ex => {
                 console.log(ex)

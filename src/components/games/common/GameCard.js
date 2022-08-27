@@ -12,7 +12,7 @@ export default function GameCard(props) {
     const { id, name, coverUrl, releaseDate, platformNames, favourite, handleAddFav, handleDelteFav } = props
 
     const [fav, setFav] = React.useState(favourite)
-
+    
     const handleCardClick = () => {
         alert(id)
     }
@@ -24,6 +24,10 @@ export default function GameCard(props) {
             handleDelteFav(id)
         setFav(!fav)
     }
+
+    React.useEffect(() => {
+        setFav(favourite)
+    }, [favourite, setFav])
 
     return (
         <Card sx={{ display: "flex", position: "relative", cursor: "pointer" }}>

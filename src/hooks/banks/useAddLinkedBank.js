@@ -16,7 +16,7 @@ export function useAddLinkedBank() {
     const [loadingAddLinkedBank, setLoadingAddLinkedBank] = useState(false)
     const { userInfo } = useContext(AuthContext)
 
-    const linkBank = (linkedBankId) => axiosInstance.post(`/Banks/LinkBank?user=${userInfo.email}&redirectUri=${getWebUrl()}/mybankaccounts&linkedBankId=${linkedBankId}`)
+    const linkBank = (linkedBankId) => axiosInstance.post(`/Banks/LinkBank?user=${userInfo.userId}&redirectUri=${getWebUrl()}/mybankaccounts&linkedBankId=${linkedBankId}`)
 
     const linkNewBank = (bankId) => {
         setLoadingAddLinkedBank(true)

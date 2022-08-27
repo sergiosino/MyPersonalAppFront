@@ -10,9 +10,9 @@ export function useLinkedBanks() {
 
     const { userInfo } = useContext(AuthContext)
 
-    const getAllLinkedBanks = () => axiosInstance.get(`/Banks/GetLinkedBanksInfo?user=${userInfo.email}`)
-    const deleteLinkedBankById = (linkedBankId) => axiosInstance.delete(`/Banks/DeleteLinkedBank?user=${userInfo.email}&linkedBankId=${linkedBankId}`)
-    const editAccountCall = (accountInfo) => axiosInstance.post(`/Accounts/SaveAccountInfo?user=${userInfo.email}`, accountInfo)
+    const getAllLinkedBanks = () => axiosInstance.get(`/Banks/GetLinkedBanksInfo?user=${userInfo.userId}`)
+    const deleteLinkedBankById = (linkedBankId) => axiosInstance.delete(`/Banks/DeleteLinkedBank?user=${userInfo.userId}&linkedBankId=${linkedBankId}`)
+    const editAccountCall = (accountInfo) => axiosInstance.post(`/Accounts/SaveAccountInfo?user=${userInfo.userId}`, accountInfo)
 
     useEffect(() => {
         setLoading(true)
